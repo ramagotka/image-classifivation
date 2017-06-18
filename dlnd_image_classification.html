@@ -12542,7 +12542,7 @@ Tests Passed
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[180]:</div>
+<div class="prompt input_prompt">In&nbsp;[188]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">):</span>
@@ -12553,7 +12553,7 @@ Tests Passed
 <span class="sd">    : return: A 2-D tensor where the second dimension is num_outputs.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TODO: Implement Function</span>
-    <span class="n">x_tensor</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">fully_connected</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span><span class="n">num_outputs</span><span class="p">,</span> <span class="n">activation_fn</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
+    <span class="n">x_tensor</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">fully_connected</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span><span class="n">num_outputs</span><span class="p">,</span> <span class="n">activation_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x_tensor</span>
 
 
@@ -12604,7 +12604,7 @@ Tests Passed
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[186]:</div>
+<div class="prompt input_prompt">In&nbsp;[195]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#moje</span>
@@ -12727,7 +12727,7 @@ Neural Network Built!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="prompt input_prompt">In&nbsp;[190]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">train_neural_network</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">keep_probability</span><span class="p">,</span> <span class="n">feature_batch</span><span class="p">,</span> <span class="n">label_batch</span><span class="p">):</span>
@@ -12783,7 +12783,7 @@ Neural Network Built!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="prompt input_prompt">In&nbsp;[191]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_stats</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">feature_batch</span><span class="p">,</span> <span class="n">label_batch</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">):</span>
@@ -12796,9 +12796,13 @@ Neural Network Built!
 <span class="sd">    : accuracy: TensorFlow accuracy function</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TODO: Implement Function</span>
-    <span class="n">training_accuracy</span><span class="p">,</span> <span class="n">training_loss</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">cost</span><span class="p">],</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="n">feature_batch</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">label_batch</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span><span class="n">keep_probability</span><span class="p">}</span> <span class="p">)</span>
+    <span class="n">training_accuracy</span><span class="p">,</span> <span class="n">training_loss</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">cost</span><span class="p">],</span>
+                                                   <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="n">feature_batch</span><span class="p">,</span>
+                                                              <span class="n">y</span><span class="p">:</span> <span class="n">label_batch</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span><span class="mf">1.0</span><span class="p">}</span> <span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Training accuracy &quot;</span><span class="p">,</span> <span class="n">training_accuracy</span><span class="p">,</span> <span class="s2">&quot;train loss &quot;</span><span class="p">,</span> <span class="n">training_loss</span><span class="p">)</span>
-    <span class="n">valid_accuracy</span><span class="p">,</span> <span class="n">valid_loss</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">cost</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="n">valid_features</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">valid_labels</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
+    <span class="n">valid_accuracy</span><span class="p">,</span> <span class="n">valid_loss</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">cost</span><span class="p">],</span>
+                                             <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="n">valid_features</span><span class="p">,</span>
+                                                        <span class="n">y</span><span class="p">:</span> <span class="n">valid_labels</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span><span class="mf">1.0</span><span class="p">})</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation accuracy &quot;</span><span class="p">,</span> <span class="n">valid_accuracy</span><span class="p">,</span> <span class="s2">&quot; valid loss &quot;</span><span class="p">,</span> <span class="n">valid_loss</span><span class="p">)</span>
     
 </pre></div>
@@ -12831,7 +12835,7 @@ Neural Network Built!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[182]:</div>
+<div class="prompt input_prompt">In&nbsp;[192]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Tune Parameters</span>
@@ -12857,7 +12861,7 @@ Neural Network Built!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[187]:</div>
+<div class="prompt input_prompt">In&nbsp;[193]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12891,14 +12895,95 @@ Neural Network Built!
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Checking the Training on a Single Batch...
 Epoch  1, CIFAR-10 Batch 1:  
-Training accuracy  0.137376 train loss  2.27319
-Validation accuracy  0.1494  valid loss  2.25604
+Training accuracy  0.19802 train loss  2.17548
+Validation accuracy  0.185  valid loss  2.16554
 Epoch  2, CIFAR-10 Batch 1:  
-Training accuracy  0.190594 train loss  2.20052
-Validation accuracy  0.218  valid loss  2.17231
+Training accuracy  0.272277 train loss  2.02066
+Validation accuracy  0.2796  valid loss  1.99935
 Epoch  3, CIFAR-10 Batch 1:  
-Training accuracy  0.238861 train loss  2.13377
-Validation accuracy  0.2478  valid loss  2.11
+Training accuracy  0.289604 train loss  1.88103
+Validation accuracy  0.2878  valid loss  1.86682
+Epoch  4, CIFAR-10 Batch 1:  
+Training accuracy  0.365099 train loss  1.79612
+Validation accuracy  0.3458  valid loss  1.7996
+Epoch  5, CIFAR-10 Batch 1:  
+Training accuracy  0.393564 train loss  1.67126
+Validation accuracy  0.3882  valid loss  1.66506
+Epoch  6, CIFAR-10 Batch 1:  
+Training accuracy  0.408416 train loss  1.62927
+Validation accuracy  0.3812  valid loss  1.66929
+Epoch  7, CIFAR-10 Batch 1:  
+Training accuracy  0.444307 train loss  1.52913
+Validation accuracy  0.4156  valid loss  1.56473
+Epoch  8, CIFAR-10 Batch 1:  
+Training accuracy  0.455446 train loss  1.49506
+Validation accuracy  0.4306  valid loss  1.5305
+Epoch  9, CIFAR-10 Batch 1:  
+Training accuracy  0.485148 train loss  1.43551
+Validation accuracy  0.4458  valid loss  1.50445
+Epoch 10, CIFAR-10 Batch 1:  
+Training accuracy  0.480198 train loss  1.45978
+Validation accuracy  0.443  valid loss  1.54077
+Epoch 11, CIFAR-10 Batch 1:  
+Training accuracy  0.517327 train loss  1.35243
+Validation accuracy  0.4746  valid loss  1.43103
+Epoch 12, CIFAR-10 Batch 1:  
+Training accuracy  0.52599 train loss  1.31149
+Validation accuracy  0.4732  valid loss  1.42543
+Epoch 13, CIFAR-10 Batch 1:  
+Training accuracy  0.553218 train loss  1.28384
+Validation accuracy  0.4824  valid loss  1.41421
+Epoch 14, CIFAR-10 Batch 1:  
+Training accuracy  0.559406 train loss  1.21036
+Validation accuracy  0.5092  valid loss  1.35476
+Epoch 15, CIFAR-10 Batch 1:  
+Training accuracy  0.569307 train loss  1.18994
+Validation accuracy  0.5092  valid loss  1.34898
+Epoch 16, CIFAR-10 Batch 1:  
+Training accuracy  0.587871 train loss  1.15879
+Validation accuracy  0.5076  valid loss  1.35386
+Epoch 17, CIFAR-10 Batch 1:  
+Training accuracy  0.591584 train loss  1.14795
+Validation accuracy  0.506  valid loss  1.38543
+Epoch 18, CIFAR-10 Batch 1:  
+Training accuracy  0.617574 train loss  1.05253
+Validation accuracy  0.528  valid loss  1.30928
+Epoch 19, CIFAR-10 Batch 1:  
+Training accuracy  0.627475 train loss  1.07056
+Validation accuracy  0.5114  valid loss  1.36473
+Epoch 20, CIFAR-10 Batch 1:  
+Training accuracy  0.648515 train loss  1.01057
+Validation accuracy  0.5252  valid loss  1.3151
+Epoch 21, CIFAR-10 Batch 1:  
+Training accuracy  0.657178 train loss  0.971365
+Validation accuracy  0.5356  valid loss  1.31364
+Epoch 22, CIFAR-10 Batch 1:  
+Training accuracy  0.685644 train loss  0.902881
+Validation accuracy  0.5394  valid loss  1.28558
+Epoch 23, CIFAR-10 Batch 1:  
+Training accuracy  0.684406 train loss  0.903565
+Validation accuracy  0.541  valid loss  1.30713
+Epoch 24, CIFAR-10 Batch 1:  
+Training accuracy  0.707921 train loss  0.854162
+Validation accuracy  0.5492  valid loss  1.28379
+Epoch 25, CIFAR-10 Batch 1:  
+Training accuracy  0.722772 train loss  0.772322
+Validation accuracy  0.5584  valid loss  1.27307
+Epoch 26, CIFAR-10 Batch 1:  
+Training accuracy  0.74505 train loss  0.745251
+Validation accuracy  0.5554  valid loss  1.26244
+Epoch 27, CIFAR-10 Batch 1:  
+Training accuracy  0.722772 train loss  0.787547
+Validation accuracy  0.5462  valid loss  1.34345
+Epoch 28, CIFAR-10 Batch 1:  
+Training accuracy  0.737624 train loss  0.718452
+Validation accuracy  0.5608  valid loss  1.30845
+Epoch 29, CIFAR-10 Batch 1:  
+Training accuracy  0.737624 train loss  0.751678
+Validation accuracy  0.538  valid loss  1.37338
+Epoch 30, CIFAR-10 Batch 1:  
+Training accuracy  0.789604 train loss  0.638891
+Validation accuracy  0.5636  valid loss  1.27326
 </pre>
 </div>
 </div>
@@ -12919,7 +13004,7 @@ Validation accuracy  0.2478  valid loss  2.11
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[173]:</div>
+<div class="prompt input_prompt">In&nbsp;[196]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12961,455 +13046,455 @@ Validation accuracy  0.2478  valid loss  2.11
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training...
 Epoch  1, CIFAR-10 Batch 1:  
-Training accuracy  0.162129 train loss  2.23826
-Validation accuracy  0.1792  valid loss  2.2264
+Training accuracy  0.20297 train loss  2.2526
+Validation accuracy  0.2118  valid loss  2.25125
 Epoch  1, CIFAR-10 Batch 2:  
-Training accuracy  0.222772 train loss  2.14234
-Validation accuracy  0.2322  valid loss  2.09271
+Training accuracy  0.227723 train loss  2.03629
+Validation accuracy  0.245  valid loss  2.02548
 Epoch  1, CIFAR-10 Batch 3:  
-Training accuracy  0.284653 train loss  2.02468
-Validation accuracy  0.2886  valid loss  2.01877
+Training accuracy  0.283416 train loss  1.84842
+Validation accuracy  0.29  valid loss  1.89173
 Epoch  1, CIFAR-10 Batch 4:  
-Training accuracy  0.318069 train loss  1.95392
-Validation accuracy  0.3082  valid loss  1.94009
+Training accuracy  0.363861 train loss  1.76892
+Validation accuracy  0.3386  valid loss  1.79761
 Epoch  1, CIFAR-10 Batch 5:  
-Training accuracy  0.304455 train loss  1.93453
-Validation accuracy  0.3226  valid loss  1.88492
+Training accuracy  0.357673 train loss  1.72371
+Validation accuracy  0.3828  valid loss  1.69223
 Epoch  2, CIFAR-10 Batch 1:  
-Training accuracy  0.32302 train loss  1.88283
-Validation accuracy  0.3388  valid loss  1.83721
+Training accuracy  0.407178 train loss  1.65405
+Validation accuracy  0.3806  valid loss  1.65201
 Epoch  2, CIFAR-10 Batch 2:  
-Training accuracy  0.329208 train loss  1.85495
-Validation accuracy  0.3422  valid loss  1.79871
+Training accuracy  0.40099 train loss  1.63483
+Validation accuracy  0.3974  valid loss  1.61731
 Epoch  2, CIFAR-10 Batch 3:  
-Training accuracy  0.358911 train loss  1.80138
-Validation accuracy  0.3532  valid loss  1.77711
+Training accuracy  0.460396 train loss  1.47714
+Validation accuracy  0.4134  valid loss  1.55167
 Epoch  2, CIFAR-10 Batch 4:  
-Training accuracy  0.35396 train loss  1.76979
-Validation accuracy  0.3574  valid loss  1.7727
+Training accuracy  0.431931 train loss  1.48796
+Validation accuracy  0.4292  valid loss  1.52294
 Epoch  2, CIFAR-10 Batch 5:  
-Training accuracy  0.311881 train loss  1.82085
-Validation accuracy  0.3652  valid loss  1.74244
+Training accuracy  0.438119 train loss  1.47453
+Validation accuracy  0.4484  valid loss  1.46989
 Epoch  3, CIFAR-10 Batch 1:  
-Training accuracy  0.37005 train loss  1.76458
-Validation accuracy  0.377  valid loss  1.73088
+Training accuracy  0.465347 train loss  1.43556
+Validation accuracy  0.4574  valid loss  1.45831
 Epoch  3, CIFAR-10 Batch 2:  
-Training accuracy  0.345297 train loss  1.79422
-Validation accuracy  0.3596  valid loss  1.78301
+Training accuracy  0.470297 train loss  1.4366
+Validation accuracy  0.465  valid loss  1.45027
 Epoch  3, CIFAR-10 Batch 3:  
-Training accuracy  0.407178 train loss  1.68738
-Validation accuracy  0.3808  valid loss  1.70723
+Training accuracy  0.508663 train loss  1.31811
+Validation accuracy  0.4796  valid loss  1.40672
 Epoch  3, CIFAR-10 Batch 4:  
-Training accuracy  0.409653 train loss  1.67033
-Validation accuracy  0.3928  valid loss  1.68357
+Training accuracy  0.508663 train loss  1.33556
+Validation accuracy  0.4992  valid loss  1.38229
 Epoch  3, CIFAR-10 Batch 5:  
-Training accuracy  0.363861 train loss  1.69483
-Validation accuracy  0.3994  valid loss  1.65951
+Training accuracy  0.522277 train loss  1.31573
+Validation accuracy  0.5098  valid loss  1.34501
 Epoch  4, CIFAR-10 Batch 1:  
-Training accuracy  0.42203 train loss  1.68915
-Validation accuracy  0.3986  valid loss  1.673
+Training accuracy  0.524752 train loss  1.31486
+Validation accuracy  0.4984  valid loss  1.35908
 Epoch  4, CIFAR-10 Batch 2:  
-Training accuracy  0.394802 train loss  1.70603
-Validation accuracy  0.404  valid loss  1.67379
+Training accuracy  0.524752 train loss  1.32037
+Validation accuracy  0.4894  valid loss  1.38336
 Epoch  4, CIFAR-10 Batch 3:  
-Training accuracy  0.450495 train loss  1.5956
-Validation accuracy  0.435  valid loss  1.61042
+Training accuracy  0.55198 train loss  1.22761
+Validation accuracy  0.5062  valid loss  1.3272
 Epoch  4, CIFAR-10 Batch 4:  
-Training accuracy  0.461634 train loss  1.55815
-Validation accuracy  0.4602  valid loss  1.55492
+Training accuracy  0.556931 train loss  1.23765
+Validation accuracy  0.5302  valid loss  1.30178
 Epoch  4, CIFAR-10 Batch 5:  
-Training accuracy  0.461634 train loss  1.56407
-Validation accuracy  0.4566  valid loss  1.53817
+Training accuracy  0.548267 train loss  1.23052
+Validation accuracy  0.5184  valid loss  1.30005
 Epoch  5, CIFAR-10 Batch 1:  
-Training accuracy  0.497525 train loss  1.50639
-Validation accuracy  0.4706  valid loss  1.50504
+Training accuracy  0.550743 train loss  1.22536
+Validation accuracy  0.5236  valid loss  1.27854
 Epoch  5, CIFAR-10 Batch 2:  
-Training accuracy  0.441832 train loss  1.57206
-Validation accuracy  0.4694  valid loss  1.50474
+Training accuracy  0.574257 train loss  1.20082
+Validation accuracy  0.55  valid loss  1.24537
 Epoch  5, CIFAR-10 Batch 3:  
-Training accuracy  0.497525 train loss  1.46112
-Validation accuracy  0.4676  valid loss  1.50949
+Training accuracy  0.59901 train loss  1.14054
+Validation accuracy  0.5424  valid loss  1.23537
 Epoch  5, CIFAR-10 Batch 4:  
-Training accuracy  0.495049 train loss  1.46537
-Validation accuracy  0.4918  valid loss  1.46845
+Training accuracy  0.57302 train loss  1.17375
+Validation accuracy  0.5534  valid loss  1.25179
 Epoch  5, CIFAR-10 Batch 5:  
-Training accuracy  0.495049 train loss  1.43309
-Validation accuracy  0.4946  valid loss  1.44531
+Training accuracy  0.575495 train loss  1.16504
+Validation accuracy  0.5502  valid loss  1.24846
 Epoch  6, CIFAR-10 Batch 1:  
-Training accuracy  0.522277 train loss  1.43257
-Validation accuracy  0.4762  valid loss  1.47145
+Training accuracy  0.601485 train loss  1.14374
+Validation accuracy  0.5524  valid loss  1.23042
 Epoch  6, CIFAR-10 Batch 2:  
-Training accuracy  0.485148 train loss  1.50109
-Validation accuracy  0.4952  valid loss  1.43486
+Training accuracy  0.600247 train loss  1.13237
+Validation accuracy  0.5692  valid loss  1.19422
 Epoch  6, CIFAR-10 Batch 3:  
-Training accuracy  0.514851 train loss  1.38717
-Validation accuracy  0.504  valid loss  1.40153
+Training accuracy  0.610149 train loss  1.0743
+Validation accuracy  0.571  valid loss  1.18808
 Epoch  6, CIFAR-10 Batch 4:  
-Training accuracy  0.532178 train loss  1.40061
-Validation accuracy  0.5128  valid loss  1.39388
+Training accuracy  0.631188 train loss  1.05604
+Validation accuracy  0.5774  valid loss  1.17161
 Epoch  6, CIFAR-10 Batch 5:  
-Training accuracy  0.529703 train loss  1.38649
-Validation accuracy  0.5072  valid loss  1.39457
+Training accuracy  0.623762 train loss  1.04681
+Validation accuracy  0.5826  valid loss  1.15252
 Epoch  7, CIFAR-10 Batch 1:  
-Training accuracy  0.549505 train loss  1.31853
-Validation accuracy  0.5178  valid loss  1.37439
+Training accuracy  0.620049 train loss  1.07551
+Validation accuracy  0.5702  valid loss  1.18269
 Epoch  7, CIFAR-10 Batch 2:  
-Training accuracy  0.487624 train loss  1.43522
-Validation accuracy  0.4946  valid loss  1.4144
+Training accuracy  0.625 train loss  1.05668
+Validation accuracy  0.579  valid loss  1.16227
 Epoch  7, CIFAR-10 Batch 3:  
-Training accuracy  0.54703 train loss  1.32436
-Validation accuracy  0.5182  valid loss  1.37706
+Training accuracy  0.637376 train loss  1.00063
+Validation accuracy  0.5886  valid loss  1.13304
 Epoch  7, CIFAR-10 Batch 4:  
-Training accuracy  0.537129 train loss  1.33435
-Validation accuracy  0.5228  valid loss  1.35645
+Training accuracy  0.654703 train loss  0.989919
+Validation accuracy  0.594  valid loss  1.1198
 Epoch  7, CIFAR-10 Batch 5:  
-Training accuracy  0.559406 train loss  1.30784
-Validation accuracy  0.524  valid loss  1.34656
+Training accuracy  0.647277 train loss  0.979591
+Validation accuracy  0.602  valid loss  1.11151
 Epoch  8, CIFAR-10 Batch 1:  
-Training accuracy  0.566832 train loss  1.26785
-Validation accuracy  0.5256  valid loss  1.34843
+Training accuracy  0.659653 train loss  0.9817
+Validation accuracy  0.6068  valid loss  1.0956
 Epoch  8, CIFAR-10 Batch 2:  
-Training accuracy  0.530941 train loss  1.34211
-Validation accuracy  0.5292  valid loss  1.32709
+Training accuracy  0.631188 train loss  1.01478
+Validation accuracy  0.5926  valid loss  1.14027
 Epoch  8, CIFAR-10 Batch 3:  
-Training accuracy  0.57302 train loss  1.23861
-Validation accuracy  0.5422  valid loss  1.30994
+Training accuracy  0.648515 train loss  0.966718
+Validation accuracy  0.6062  valid loss  1.1082
 Epoch  8, CIFAR-10 Batch 4:  
-Training accuracy  0.565594 train loss  1.27083
-Validation accuracy  0.5462  valid loss  1.29592
+Training accuracy  0.688119 train loss  0.936157
+Validation accuracy  0.6042  valid loss  1.08803
 Epoch  8, CIFAR-10 Batch 5:  
-Training accuracy  0.596535 train loss  1.2229
-Validation accuracy  0.5366  valid loss  1.31295
+Training accuracy  0.678218 train loss  0.900764
+Validation accuracy  0.6238  valid loss  1.06115
 Epoch  9, CIFAR-10 Batch 1:  
-Training accuracy  0.581683 train loss  1.22178
-Validation accuracy  0.5356  valid loss  1.31033
+Training accuracy  0.674505 train loss  0.925452
+Validation accuracy  0.614  valid loss  1.07246
 Epoch  9, CIFAR-10 Batch 2:  
-Training accuracy  0.542079 train loss  1.29825
-Validation accuracy  0.541  valid loss  1.29071
+Training accuracy  0.660891 train loss  0.94067
+Validation accuracy  0.6158  valid loss  1.07376
 Epoch  9, CIFAR-10 Batch 3:  
-Training accuracy  0.587871 train loss  1.19722
-Validation accuracy  0.5522  valid loss  1.28219
+Training accuracy  0.67203 train loss  0.912163
+Validation accuracy  0.6202  valid loss  1.08434
 Epoch  9, CIFAR-10 Batch 4:  
-Training accuracy  0.565594 train loss  1.21609
-Validation accuracy  0.5596  valid loss  1.26738
+Training accuracy  0.705446 train loss  0.882084
+Validation accuracy  0.6212  valid loss  1.04759
 Epoch  9, CIFAR-10 Batch 5:  
-Training accuracy  0.584158 train loss  1.17312
-Validation accuracy  0.5532  valid loss  1.27437
+Training accuracy  0.69802 train loss  0.851216
+Validation accuracy  0.6318  valid loss  1.03425
 Epoch 10, CIFAR-10 Batch 1:  
-Training accuracy  0.594059 train loss  1.20013
-Validation accuracy  0.5558  valid loss  1.27494
+Training accuracy  0.683168 train loss  0.880272
+Validation accuracy  0.6258  valid loss  1.04451
 Epoch 10, CIFAR-10 Batch 2:  
-Training accuracy  0.554455 train loss  1.25733
-Validation accuracy  0.5504  valid loss  1.26682
+Training accuracy  0.691832 train loss  0.856646
+Validation accuracy  0.6406  valid loss  1.0216
 Epoch 10, CIFAR-10 Batch 3:  
-Training accuracy  0.585396 train loss  1.15095
-Validation accuracy  0.5552  valid loss  1.27181
+Training accuracy  0.693069 train loss  0.844086
+Validation accuracy  0.6428  valid loss  1.03175
 Epoch 10, CIFAR-10 Batch 4:  
-Training accuracy  0.586634 train loss  1.1772
-Validation accuracy  0.5696  valid loss  1.24638
+Training accuracy  0.731436 train loss  0.819019
+Validation accuracy  0.628  valid loss  1.02059
 Epoch 10, CIFAR-10 Batch 5:  
-Training accuracy  0.610149 train loss  1.11902
-Validation accuracy  0.563  valid loss  1.24796
+Training accuracy  0.722772 train loss  0.80436
+Validation accuracy  0.6462  valid loss  1.00182
 Epoch 11, CIFAR-10 Batch 1:  
-Training accuracy  0.632426 train loss  1.10645
-Validation accuracy  0.5528  valid loss  1.26555
+Training accuracy  0.69802 train loss  0.841343
+Validation accuracy  0.6416  valid loss  1.02164
 Epoch 11, CIFAR-10 Batch 2:  
-Training accuracy  0.596535 train loss  1.19702
-Validation accuracy  0.5662  valid loss  1.24124
+Training accuracy  0.72896 train loss  0.798146
+Validation accuracy  0.6456  valid loss  0.998849
 Epoch 11, CIFAR-10 Batch 3:  
-Training accuracy  0.610149 train loss  1.12562
-Validation accuracy  0.5616  valid loss  1.2551
+Training accuracy  0.707921 train loss  0.803784
+Validation accuracy  0.6528  valid loss  1.01431
 Epoch 11, CIFAR-10 Batch 4:  
-Training accuracy  0.605198 train loss  1.16976
-Validation accuracy  0.5728  valid loss  1.22356
+Training accuracy  0.752475 train loss  0.751353
+Validation accuracy  0.6444  valid loss  0.982561
 Epoch 11, CIFAR-10 Batch 5:  
-Training accuracy  0.625 train loss  1.1148
-Validation accuracy  0.5626  valid loss  1.25455
+Training accuracy  0.731436 train loss  0.750558
+Validation accuracy  0.6518  valid loss  0.988522
 Epoch 12, CIFAR-10 Batch 1:  
-Training accuracy  0.615099 train loss  1.12007
-Validation accuracy  0.5568  valid loss  1.27164
+Training accuracy  0.710396 train loss  0.800534
+Validation accuracy  0.649  valid loss  1.01425
 Epoch 12, CIFAR-10 Batch 2:  
-Training accuracy  0.568069 train loss  1.19245
-Validation accuracy  0.5684  valid loss  1.23834
+Training accuracy  0.742574 train loss  0.759958
+Validation accuracy  0.6526  valid loss  0.982902
 Epoch 12, CIFAR-10 Batch 3:  
-Training accuracy  0.62005 train loss  1.1048
-Validation accuracy  0.5784  valid loss  1.23081
+Training accuracy  0.730198 train loss  0.764044
+Validation accuracy  0.6604  valid loss  0.987194
 Epoch 12, CIFAR-10 Batch 4:  
-Training accuracy  0.632426 train loss  1.08971
-Validation accuracy  0.5758  valid loss  1.21495
+Training accuracy  0.758663 train loss  0.731355
+Validation accuracy  0.6518  valid loss  0.980415
 Epoch 12, CIFAR-10 Batch 5:  
-Training accuracy  0.634901 train loss  1.13488
-Validation accuracy  0.5552  valid loss  1.26511
+Training accuracy  0.75495 train loss  0.724451
+Validation accuracy  0.6522  valid loss  1.00179
 Epoch 13, CIFAR-10 Batch 1:  
-Training accuracy  0.622525 train loss  1.0727
-Validation accuracy  0.5706  valid loss  1.2568
+Training accuracy  0.719059 train loss  0.767057
+Validation accuracy  0.651  valid loss  1.00619
 Epoch 13, CIFAR-10 Batch 2:  
-Training accuracy  0.591584 train loss  1.15847
-Validation accuracy  0.576  valid loss  1.24204
+Training accuracy  0.737624 train loss  0.717808
+Validation accuracy  0.6594  valid loss  0.970647
 Epoch 13, CIFAR-10 Batch 3:  
-Training accuracy  0.642327 train loss  1.04422
-Validation accuracy  0.581  valid loss  1.20881
+Training accuracy  0.761139 train loss  0.695108
+Validation accuracy  0.6714  valid loss  0.954399
 Epoch 13, CIFAR-10 Batch 4:  
-Training accuracy  0.634901 train loss  1.08421
-Validation accuracy  0.5818  valid loss  1.21791
+Training accuracy  0.774752 train loss  0.673568
+Validation accuracy  0.6496  valid loss  0.973305
 Epoch 13, CIFAR-10 Batch 5:  
-Training accuracy  0.643564 train loss  1.03627
-Validation accuracy  0.5778  valid loss  1.2182
+Training accuracy  0.773515 train loss  0.67094
+Validation accuracy  0.6664  valid loss  0.956913
 Epoch 14, CIFAR-10 Batch 1:  
-Training accuracy  0.655941 train loss  1.01204
-Validation accuracy  0.581  valid loss  1.2169
+Training accuracy  0.746287 train loss  0.698091
+Validation accuracy  0.6678  valid loss  0.970851
 Epoch 14, CIFAR-10 Batch 2:  
-Training accuracy  0.627475 train loss  1.07321
-Validation accuracy  0.589  valid loss  1.19666
+Training accuracy  0.767327 train loss  0.666672
+Validation accuracy  0.6708  valid loss  0.940189
 Epoch 14, CIFAR-10 Batch 3:  
-Training accuracy  0.662129 train loss  1.00192
-Validation accuracy  0.585  valid loss  1.20909
+Training accuracy  0.772277 train loss  0.662512
+Validation accuracy  0.6696  valid loss  0.959101
 Epoch 14, CIFAR-10 Batch 4:  
-Training accuracy  0.647277 train loss  1.03295
-Validation accuracy  0.5892  valid loss  1.19953
+Training accuracy  0.794555 train loss  0.620682
+Validation accuracy  0.6672  valid loss  0.940962
 Epoch 14, CIFAR-10 Batch 5:  
-Training accuracy  0.668317 train loss  0.992127
-Validation accuracy  0.586  valid loss  1.19445
+Training accuracy  0.789604 train loss  0.641306
+Validation accuracy  0.6672  valid loss  0.953354
 Epoch 15, CIFAR-10 Batch 1:  
-Training accuracy  0.649752 train loss  1.00607
-Validation accuracy  0.575  valid loss  1.23987
+Training accuracy  0.764851 train loss  0.666236
+Validation accuracy  0.6676  valid loss  0.957772
 Epoch 15, CIFAR-10 Batch 2:  
-Training accuracy  0.625 train loss  1.05858
-Validation accuracy  0.5822  valid loss  1.20656
+Training accuracy  0.761139 train loss  0.680877
+Validation accuracy  0.6622  valid loss  0.971755
 Epoch 15, CIFAR-10 Batch 3:  
-Training accuracy  0.642327 train loss  0.984051
-Validation accuracy  0.5902  valid loss  1.20232
+Training accuracy  0.789604 train loss  0.640176
+Validation accuracy  0.6648  valid loss  0.969066
 Epoch 15, CIFAR-10 Batch 4:  
-Training accuracy  0.634901 train loss  1.01527
-Validation accuracy  0.5864  valid loss  1.24546
+Training accuracy  0.785891 train loss  0.661465
+Validation accuracy  0.6588  valid loss  1.00927
 Epoch 15, CIFAR-10 Batch 5:  
-Training accuracy  0.67203 train loss  0.961333
-Validation accuracy  0.5936  valid loss  1.18443
+Training accuracy  0.785891 train loss  0.61545
+Validation accuracy  0.6692  valid loss  0.945022
 Epoch 16, CIFAR-10 Batch 1:  
-Training accuracy  0.684406 train loss  0.963607
-Validation accuracy  0.5916  valid loss  1.20062
+Training accuracy  0.782178 train loss  0.640601
+Validation accuracy  0.6702  valid loss  0.965964
 Epoch 16, CIFAR-10 Batch 2:  
-Training accuracy  0.658416 train loss  1.04455
-Validation accuracy  0.5904  valid loss  1.20576
+Training accuracy  0.780941 train loss  0.635118
+Validation accuracy  0.6568  valid loss  0.972317
 Epoch 16, CIFAR-10 Batch 3:  
-Training accuracy  0.684406 train loss  0.924396
-Validation accuracy  0.5952  valid loss  1.19608
+Training accuracy  0.783416 train loss  0.607462
+Validation accuracy  0.664  valid loss  0.971485
 Epoch 16, CIFAR-10 Batch 4:  
-Training accuracy  0.662129 train loss  0.947651
-Validation accuracy  0.588  valid loss  1.21518
+Training accuracy  0.809406 train loss  0.595811
+Validation accuracy  0.6696  valid loss  0.963305
 Epoch 16, CIFAR-10 Batch 5:  
-Training accuracy  0.712871 train loss  0.875141
-Validation accuracy  0.5876  valid loss  1.18641
+Training accuracy  0.816832 train loss  0.57179
+Validation accuracy  0.6708  valid loss  0.941287
 Epoch 17, CIFAR-10 Batch 1:  
-Training accuracy  0.673267 train loss  0.94967
-Validation accuracy  0.5914  valid loss  1.20524
+Training accuracy  0.792079 train loss  0.580372
+Validation accuracy  0.672  valid loss  0.953175
 Epoch 17, CIFAR-10 Batch 2:  
-Training accuracy  0.643564 train loss  1.0299
-Validation accuracy  0.5856  valid loss  1.20833
+Training accuracy  0.804455 train loss  0.569599
+Validation accuracy  0.6774  valid loss  0.94319
 Epoch 17, CIFAR-10 Batch 3:  
-Training accuracy  0.681931 train loss  0.933668
-Validation accuracy  0.5972  valid loss  1.18244
+Training accuracy  0.810644 train loss  0.565575
+Validation accuracy  0.672  valid loss  0.950598
 Epoch 17, CIFAR-10 Batch 4:  
-Training accuracy  0.674505 train loss  0.9462
-Validation accuracy  0.5936  valid loss  1.19239
+Training accuracy  0.800743 train loss  0.57471
+Validation accuracy  0.6684  valid loss  0.992683
 Epoch 17, CIFAR-10 Batch 5:  
-Training accuracy  0.686881 train loss  0.918971
-Validation accuracy  0.5952  valid loss  1.17989
+Training accuracy  0.815594 train loss  0.536875
+Validation accuracy  0.6838  valid loss  0.918408
 Epoch 18, CIFAR-10 Batch 1:  
-Training accuracy  0.69802 train loss  0.873368
-Validation accuracy  0.6018  valid loss  1.18201
+Training accuracy  0.804455 train loss  0.551407
+Validation accuracy  0.6756  valid loss  0.94183
 Epoch 18, CIFAR-10 Batch 2:  
-Training accuracy  0.648515 train loss  1.01632
-Validation accuracy  0.5814  valid loss  1.22677
+Training accuracy  0.811881 train loss  0.561335
+Validation accuracy  0.673  valid loss  0.967974
 Epoch 18, CIFAR-10 Batch 3:  
-Training accuracy  0.683168 train loss  0.907609
-Validation accuracy  0.5938  valid loss  1.19154
+Training accuracy  0.789604 train loss  0.606085
+Validation accuracy  0.6532  valid loss  1.02772
 Epoch 18, CIFAR-10 Batch 4:  
-Training accuracy  0.680693 train loss  0.94034
-Validation accuracy  0.5874  valid loss  1.19254
+Training accuracy  0.825495 train loss  0.53385
+Validation accuracy  0.6712  valid loss  0.96677
 Epoch 18, CIFAR-10 Batch 5:  
-Training accuracy  0.689357 train loss  0.87961
-Validation accuracy  0.5938  valid loss  1.16815
+Training accuracy  0.820544 train loss  0.537488
+Validation accuracy  0.6822  valid loss  0.929989
 Epoch 19, CIFAR-10 Batch 1:  
-Training accuracy  0.684406 train loss  0.916534
-Validation accuracy  0.5838  valid loss  1.24245
+Training accuracy  0.820545 train loss  0.527301
+Validation accuracy  0.6758  valid loss  0.958963
 Epoch 19, CIFAR-10 Batch 2:  
-Training accuracy  0.655941 train loss  0.987829
-Validation accuracy  0.5846  valid loss  1.21016
+Training accuracy  0.798267 train loss  0.549992
+Validation accuracy  0.6662  valid loss  1.00739
 Epoch 19, CIFAR-10 Batch 3:  
-Training accuracy  0.70297 train loss  0.858522
-Validation accuracy  0.5994  valid loss  1.17798
+Training accuracy  0.794554 train loss  0.555089
+Validation accuracy  0.6654  valid loss  0.994179
 Epoch 19, CIFAR-10 Batch 4:  
-Training accuracy  0.701733 train loss  0.851137
-Validation accuracy  0.6012  valid loss  1.17888
+Training accuracy  0.819307 train loss  0.532136
+Validation accuracy  0.6708  valid loss  0.966014
 Epoch 19, CIFAR-10 Batch 5:  
-Training accuracy  0.710396 train loss  0.835387
-Validation accuracy  0.6  valid loss  1.1842
+Training accuracy  0.841584 train loss  0.48692
+Validation accuracy  0.6924  valid loss  0.905818
 Epoch 20, CIFAR-10 Batch 1:  
-Training accuracy  0.721535 train loss  0.851451
-Validation accuracy  0.5956  valid loss  1.18549
+Training accuracy  0.831683 train loss  0.492751
+Validation accuracy  0.6882  valid loss  0.940444
 Epoch 20, CIFAR-10 Batch 2:  
-Training accuracy  0.695545 train loss  0.902198
-Validation accuracy  0.5926  valid loss  1.17759
+Training accuracy  0.831683 train loss  0.478193
+Validation accuracy  0.6854  valid loss  0.930672
 Epoch 20, CIFAR-10 Batch 3:  
-Training accuracy  0.696782 train loss  0.920545
-Validation accuracy  0.5852  valid loss  1.21446
+Training accuracy  0.820545 train loss  0.527584
+Validation accuracy  0.6714  valid loss  0.986867
 Epoch 20, CIFAR-10 Batch 4:  
-Training accuracy  0.685644 train loss  0.883874
-Validation accuracy  0.6036  valid loss  1.17923
+Training accuracy  0.840346 train loss  0.489164
+Validation accuracy  0.6882  valid loss  0.931696
 Epoch 20, CIFAR-10 Batch 5:  
-Training accuracy  0.704208 train loss  0.858929
-Validation accuracy  0.5898  valid loss  1.20958
+Training accuracy  0.82797 train loss  0.503993
+Validation accuracy  0.6808  valid loss  0.946307
 Epoch 21, CIFAR-10 Batch 1:  
-Training accuracy  0.706683 train loss  0.856239
-Validation accuracy  0.5944  valid loss  1.20205
+Training accuracy  0.830446 train loss  0.482962
+Validation accuracy  0.6812  valid loss  0.941787
 Epoch 21, CIFAR-10 Batch 2:  
-Training accuracy  0.699257 train loss  0.885047
-Validation accuracy  0.596  valid loss  1.18551
+Training accuracy  0.836634 train loss  0.474716
+Validation accuracy  0.688  valid loss  0.933255
 Epoch 21, CIFAR-10 Batch 3:  
-Training accuracy  0.70297 train loss  0.860681
-Validation accuracy  0.5884  valid loss  1.2106
+Training accuracy  0.861386 train loss  0.424247
+Validation accuracy  0.6968  valid loss  0.915851
 Epoch 21, CIFAR-10 Batch 4:  
-Training accuracy  0.688119 train loss  0.869553
-Validation accuracy  0.605  valid loss  1.18604
+Training accuracy  0.868812 train loss  0.413406
+Validation accuracy  0.6964  valid loss  0.904337
 Epoch 21, CIFAR-10 Batch 5:  
-Training accuracy  0.719059 train loss  0.799806
-Validation accuracy  0.5962  valid loss  1.20984
+Training accuracy  0.861386 train loss  0.421038
+Validation accuracy  0.6952  valid loss  0.92951
 Epoch 22, CIFAR-10 Batch 1:  
-Training accuracy  0.725248 train loss  0.81787
-Validation accuracy  0.5956  valid loss  1.217
+Training accuracy  0.861386 train loss  0.4253
+Validation accuracy  0.6892  valid loss  0.941827
 Epoch 22, CIFAR-10 Batch 2:  
-Training accuracy  0.691832 train loss  0.902628
-Validation accuracy  0.5904  valid loss  1.21398
+Training accuracy  0.846535 train loss  0.442397
+Validation accuracy  0.6822  valid loss  0.970656
 Epoch 22, CIFAR-10 Batch 3:  
-Training accuracy  0.716584 train loss  0.865003
-Validation accuracy  0.595  valid loss  1.21104
+Training accuracy  0.857673 train loss  0.404266
+Validation accuracy  0.6944  valid loss  0.924645
 Epoch 22, CIFAR-10 Batch 4:  
-Training accuracy  0.696782 train loss  0.866211
-Validation accuracy  0.5936  valid loss  1.21232
+Training accuracy  0.872525 train loss  0.383631
+Validation accuracy  0.6936  valid loss  0.905806
 Epoch 22, CIFAR-10 Batch 5:  
-Training accuracy  0.742574 train loss  0.77327
-Validation accuracy  0.5926  valid loss  1.21643
+Training accuracy  0.870049 train loss  0.38724
+Validation accuracy  0.6954  valid loss  0.92363
 Epoch 23, CIFAR-10 Batch 1:  
-Training accuracy  0.733911 train loss  0.798824
-Validation accuracy  0.5924  valid loss  1.22093
+Training accuracy  0.865099 train loss  0.403689
+Validation accuracy  0.689  valid loss  0.950219
 Epoch 23, CIFAR-10 Batch 2:  
-Training accuracy  0.696782 train loss  0.889455
-Validation accuracy  0.5904  valid loss  1.22078
+Training accuracy  0.851485 train loss  0.421989
+Validation accuracy  0.6896  valid loss  0.941831
 Epoch 23, CIFAR-10 Batch 3:  
-Training accuracy  0.691832 train loss  0.861679
-Validation accuracy  0.5866  valid loss  1.19936
+Training accuracy  0.867574 train loss  0.409086
+Validation accuracy  0.6952  valid loss  0.951915
 Epoch 23, CIFAR-10 Batch 4:  
-Training accuracy  0.714109 train loss  0.84765
-Validation accuracy  0.591  valid loss  1.2087
+Training accuracy  0.891089 train loss  0.36137
+Validation accuracy  0.6962  valid loss  0.906697
 Epoch 23, CIFAR-10 Batch 5:  
-Training accuracy  0.751238 train loss  0.726088
-Validation accuracy  0.604  valid loss  1.20739
+Training accuracy  0.857673 train loss  0.396899
+Validation accuracy  0.6932  valid loss  0.948458
 Epoch 24, CIFAR-10 Batch 1:  
-Training accuracy  0.733911 train loss  0.755537
-Validation accuracy  0.6014  valid loss  1.20397
+Training accuracy  0.871287 train loss  0.395045
+Validation accuracy  0.6778  valid loss  0.979706
 Epoch 24, CIFAR-10 Batch 2:  
-Training accuracy  0.704208 train loss  0.862623
-Validation accuracy  0.5894  valid loss  1.22489
+Training accuracy  0.872525 train loss  0.370765
+Validation accuracy  0.697  valid loss  0.931054
 Epoch 24, CIFAR-10 Batch 3:  
-Training accuracy  0.736386 train loss  0.777308
-Validation accuracy  0.6024  valid loss  1.17365
+Training accuracy  0.873762 train loss  0.397403
+Validation accuracy  0.6832  valid loss  1.01233
 Epoch 24, CIFAR-10 Batch 4:  
-Training accuracy  0.706683 train loss  0.850488
-Validation accuracy  0.5904  valid loss  1.21589
+Training accuracy  0.881188 train loss  0.359934
+Validation accuracy  0.694  valid loss  0.931588
 Epoch 24, CIFAR-10 Batch 5:  
-Training accuracy  0.748762 train loss  0.732421
-Validation accuracy  0.597  valid loss  1.1981
+Training accuracy  0.894802 train loss  0.345211
+Validation accuracy  0.6988  valid loss  0.931243
 Epoch 25, CIFAR-10 Batch 1:  
-Training accuracy  0.762376 train loss  0.694591
-Validation accuracy  0.6044  valid loss  1.19329
+Training accuracy  0.887376 train loss  0.361866
+Validation accuracy  0.6942  valid loss  0.944638
 Epoch 25, CIFAR-10 Batch 2:  
-Training accuracy  0.722772 train loss  0.846392
-Validation accuracy  0.6036  valid loss  1.1816
+Training accuracy  0.865099 train loss  0.375764
+Validation accuracy  0.6906  valid loss  0.988965
 Epoch 25, CIFAR-10 Batch 3:  
-Training accuracy  0.737624 train loss  0.748197
-Validation accuracy  0.6076  valid loss  1.20494
+Training accuracy  0.878713 train loss  0.371441
+Validation accuracy  0.6776  valid loss  1.01299
 Epoch 25, CIFAR-10 Batch 4:  
-Training accuracy  0.740099 train loss  0.756215
-Validation accuracy  0.6026  valid loss  1.20522
+Training accuracy  0.899752 train loss  0.337741
+Validation accuracy  0.6884  valid loss  0.965329
 Epoch 25, CIFAR-10 Batch 5:  
-Training accuracy  0.75495 train loss  0.69144
-Validation accuracy  0.603  valid loss  1.22177
+Training accuracy  0.910891 train loss  0.305093
+Validation accuracy  0.7036  valid loss  0.921661
 Epoch 26, CIFAR-10 Batch 1:  
-Training accuracy  0.748762 train loss  0.701828
-Validation accuracy  0.607  valid loss  1.20972
+Training accuracy  0.893564 train loss  0.3186
+Validation accuracy  0.703  valid loss  0.927269
 Epoch 26, CIFAR-10 Batch 2:  
-Training accuracy  0.72401 train loss  0.77224
-Validation accuracy  0.6036  valid loss  1.18822
+Training accuracy  0.893564 train loss  0.32916
+Validation accuracy  0.6992  valid loss  0.973392
 Epoch 26, CIFAR-10 Batch 3:  
-Training accuracy  0.738861 train loss  0.744284
-Validation accuracy  0.599  valid loss  1.21196
+Training accuracy  0.888614 train loss  0.335016
+Validation accuracy  0.6768  valid loss  1.01454
 Epoch 26, CIFAR-10 Batch 4:  
-Training accuracy  0.74505 train loss  0.7238
-Validation accuracy  0.6046  valid loss  1.20367
+Training accuracy  0.894802 train loss  0.336445
+Validation accuracy  0.6776  valid loss  1.01497
 Epoch 26, CIFAR-10 Batch 5:  
-Training accuracy  0.77104 train loss  0.684986
-Validation accuracy  0.5938  valid loss  1.23802
+Training accuracy  0.908416 train loss  0.298954
+Validation accuracy  0.7058  valid loss  0.934344
 Epoch 27, CIFAR-10 Batch 1:  
-Training accuracy  0.768564 train loss  0.654951
-Validation accuracy  0.6028  valid loss  1.21203
+Training accuracy  0.892327 train loss  0.317968
+Validation accuracy  0.6978  valid loss  0.95468
 Epoch 27, CIFAR-10 Batch 2:  
-Training accuracy  0.725248 train loss  0.763852
-Validation accuracy  0.5972  valid loss  1.23329
+Training accuracy  0.886139 train loss  0.350035
+Validation accuracy  0.6732  valid loss  1.01906
 Epoch 27, CIFAR-10 Batch 3:  
-Training accuracy  0.746287 train loss  0.74318
-Validation accuracy  0.582  valid loss  1.24192
+Training accuracy  0.905941 train loss  0.31077
+Validation accuracy  0.689  valid loss  0.974043
 Epoch 27, CIFAR-10 Batch 4:  
-Training accuracy  0.722772 train loss  0.798075
-Validation accuracy  0.5854  valid loss  1.21654
+Training accuracy  0.919554 train loss  0.295602
+Validation accuracy  0.6886  valid loss  0.968837
 Epoch 27, CIFAR-10 Batch 5:  
-Training accuracy  0.758663 train loss  0.705383
-Validation accuracy  0.5944  valid loss  1.21016
+Training accuracy  0.898515 train loss  0.321447
+Validation accuracy  0.6964  valid loss  0.939609
 Epoch 28, CIFAR-10 Batch 1:  
-Training accuracy  0.752475 train loss  0.710476
-Validation accuracy  0.594  valid loss  1.29014
+Training accuracy  0.897277 train loss  0.300495
+Validation accuracy  0.6952  valid loss  0.962678
 Epoch 28, CIFAR-10 Batch 2:  
-Training accuracy  0.735149 train loss  0.796469
-Validation accuracy  0.5988  valid loss  1.24192
+Training accuracy  0.875 train loss  0.340849
+Validation accuracy  0.6824  valid loss  1.01589
 Epoch 28, CIFAR-10 Batch 3:  
-Training accuracy  0.767327 train loss  0.683934
-Validation accuracy  0.61  valid loss  1.18107
+Training accuracy  0.903465 train loss  0.305001
+Validation accuracy  0.6828  valid loss  1.00223
 Epoch 28, CIFAR-10 Batch 4:  
-Training accuracy  0.742574 train loss  0.729968
-Validation accuracy  0.5892  valid loss  1.2172
+Training accuracy  0.907178 train loss  0.289433
+Validation accuracy  0.68  valid loss  1.03052
 Epoch 28, CIFAR-10 Batch 5:  
-Training accuracy  0.764851 train loss  0.673049
-Validation accuracy  0.605  valid loss  1.20612
+Training accuracy  0.903465 train loss  0.307061
+Validation accuracy  0.6982  valid loss  0.95959
 Epoch 29, CIFAR-10 Batch 1:  
-Training accuracy  0.769802 train loss  0.654469
-Validation accuracy  0.6002  valid loss  1.24993
+Training accuracy  0.889851 train loss  0.30717
+Validation accuracy  0.6938  valid loss  0.991862
 Epoch 29, CIFAR-10 Batch 2:  
-Training accuracy  0.746287 train loss  0.727554
-Validation accuracy  0.5982  valid loss  1.25745
+Training accuracy  0.905941 train loss  0.276084
+Validation accuracy  0.7004  valid loss  0.945226
 Epoch 29, CIFAR-10 Batch 3:  
-Training accuracy  0.753713 train loss  0.710833
-Validation accuracy  0.5938  valid loss  1.26367
+Training accuracy  0.917079 train loss  0.285296
+Validation accuracy  0.6816  valid loss  1.0249
 Epoch 29, CIFAR-10 Batch 4:  
-Training accuracy  0.701733 train loss  0.823293
-Validation accuracy  0.5756  valid loss  1.31556
+Training accuracy  0.924505 train loss  0.25168
+Validation accuracy  0.6916  valid loss  1.00177
 Epoch 29, CIFAR-10 Batch 5:  
-Training accuracy  0.764852 train loss  0.682985
-Validation accuracy  0.604  valid loss  1.22461
+Training accuracy  0.905941 train loss  0.281088
+Validation accuracy  0.6894  valid loss  1.00318
 Epoch 30, CIFAR-10 Batch 1:  
-Training accuracy  0.773515 train loss  0.629243
-Validation accuracy  0.6054  valid loss  1.26566
+Training accuracy  0.907178 train loss  0.273151
+Validation accuracy  0.6998  valid loss  0.976128
 Epoch 30, CIFAR-10 Batch 2:  
-Training accuracy  0.759901 train loss  0.720246
-Validation accuracy  0.6002  valid loss  1.25832
+Training accuracy  0.912129 train loss  0.272484
+Validation accuracy  0.6876  valid loss  0.992023
 Epoch 30, CIFAR-10 Batch 3:  
-Training accuracy  0.763614 train loss  0.677468
-Validation accuracy  0.5844  valid loss  1.27757
+Training accuracy  0.90099 train loss  0.297022
+Validation accuracy  0.6798  valid loss  1.05869
 Epoch 30, CIFAR-10 Batch 4:  
-Training accuracy  0.736386 train loss  0.732415
-Validation accuracy  0.5866  valid loss  1.27344
+Training accuracy  0.924505 train loss  0.260197
+Validation accuracy  0.6856  valid loss  1.00105
 Epoch 30, CIFAR-10 Batch 5:  
-Training accuracy  0.751238 train loss  0.661653
-Validation accuracy  0.5906  valid loss  1.22177
+Training accuracy  0.925743 train loss  0.247008
+Validation accuracy  0.7066  valid loss  0.941827
 </pre>
 </div>
 </div>
@@ -13431,7 +13516,7 @@ Validation accuracy  0.5906  valid loss  1.22177
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[174]:</div>
+<div class="prompt input_prompt">In&nbsp;[197]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -13512,7 +13597,7 @@ Validation accuracy  0.5906  valid loss  1.22177
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>INFO:tensorflow:Restoring parameters from ./image_classification
-Testing Accuracy: 0.5899633288383483
+Testing Accuracy: 0.6976403057575226
 
 </pre>
 </div>
@@ -13525,762 +13610,755 @@ Testing Accuracy: 0.5899633288383483
 
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,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
-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
-jLi4+xVmdjLROZgV3L03RYp/SdYBAliVLkU7iAFZ91Z5is8SX5ZK/s3di/mulbyH+CJSGpT1f8zs
-F+6+Vw3Sc/c3m9ntxGDF/BeMg6huIZZR58p190vSF5i/J3ut1TP8S2DJAPFl8FcVymomtWkd0aHM
-Ry1XMPw5Op4615jZBUSnvnWM3feIu3emFJj/ZHj61RJiYZ2RfI7Kq4dONSMGVRcHVhddQRbUEJEp
-pLSKSeDutxORjmcTUaabgcEqDu0hPiBe5O7Pq3ZZ4LQ603uJqY1+SuWVmUruIn6KPX0yfopM7TqZ
-+CD7HRHFmtEDUNz9XuA44ufQkR7rHcDXgae5+4+rqdfMXs3wwZj3EpHPatrUQywck1++9rNmtjsD
-AWc0d/8c0RH+J2BdFYfcT/xUf4q7j/lLSpqO63RivulKhojX4anu/vWqGr2H3P07xODNf2J4HnIl
-G4nBfKN2zNz9CmL8xEeIFJENDJ+jt2bcvR14DhF5vX2UXQeJVKVT3f3te7CsfC29lHiMbmR42k0l
-Q0T7z3H3P9HiHyLTg7nP1ulnp7cUbXpKuuxLFuHpJKK+dwF3p0FWe3quNuLDe39i4McO4gPxt9V2
-uKU6aW7h04mocSvxOK8Drks5oTLF0heEPyJ+yVlITKPVDjxEvObG6kyOVvdhxJfSFcSX23XATe7+
-+J62ew/aZMT9fSqwD5HqsSO17S7gHp/mHwRmtpJ4XJcR75VbgfXE62rKV8IbiZm1AEcTvw4uJx77
-fmLQ7IPArVOcHy0iFahzLCIiIiKSKK1CRERERCRR51hEREREJFHnWEREREQkUedYRERERCRR51hE
-REREJFHnWEREREQkUedYRERERCRR51hEREREJFHnWEREREQkUedYRERERCRR51hEREREJFHnWERE
-REQkUedYRERERCRR51hEREREJFHnWEREREQkUedYRERERCRR51hEREREJFHnWEREREQkUedYRERE
-RCRR51hEREREJFHnWEREREQkUedYRERERCRR51hEREREJFHneBYys2vMzM3sgt049oJ07DW1rFdE
-RERkJmiY6gZMJDN7N7AQuMzd10xxc0RERERkmpvVnWPg3cAq4BpgzZS2ZOboAO4DHpvqhoiIiIhM
-ttneOZZxcvcrgSunuh0iIiIiU0E5xyIiIiIiyaR1js1sqZm9zcx+YGb3mtl2M+sys7vN7FNmtl+F
-Y85MA8DWjFLvLgPIzOxiM3MipQLg6rSPjzLY7BAz+1cze9jMesxsm5n9yszeaGb1I5y7PEDNzBaY
-2SfN7CEz6071fNTMWnL7P8fMfmJmm9N9/5WZnTbG4zbudhWOX2Rml+SOX2tmXzKzFdU+ntUyszoz
-+1Mz+5mZbTKzPjNbb2ZXmNnJ461PREREZLJNZlrFRcD70t8DQCfQBhyZLq81s+e6++01ONcOYCOw
-D/EFYBvQlyvfmt/ZzF4EfBcodWQ7gLnAaelyvpmd6+5dI5xvEXATcDjQBdQDBwEfAo4FXmJmbwMu
-BTy1b06q++dm9mx3v6FYaQ3atQT4HXAI0E087vsDbwLONbMz3P2eEY4dFzObD/wn8Ny0yYHtwArg
-POCVZvYud7+0FucTERERmQiTmVbxGPBB4GlAq7svAZqBE4CfEB3Zb5mZ7emJ3P2f3H058Hja9HJ3
-X567vLy0r5kdAlxOdECvBY5w94XAfODNQC/R4fuXUU754XR9mrvPA+YRHdAB4MVm9iHg08AngCXu
-3gasBn4DNAGXFCusUbs+lPZ/MTAvte1M4BHi8f6umTWOcvx4fD2151bgBcCcdD8XA38LDAL/Yman
-1uh8IiIiIjU3aZ1jd/+Mu3/c3e9w94G0bdDdbwFeCtwNPBU4fbLalHyQiMY+BLzQ3e9Lbet19y8B
-70z7vcHMDh2hjrnAi9z9+nRsn7t/hegwAnwU+A93/6C7t6d9HgVeTURYTzSzlRPQrgXAK9z9f919
-KB1/LXA2EUl/KnD+GI/PmMzsucC5xCwXz3b3n7p7TzrfNnf/GPB3xPPtA3t6PhEREZGJMi0G5Ll7
-L/CzdHPSIospSv2KdPMSd99ZYbevAOsAA145QlXfdfcHK2z/ee7vjxcLUwe5dNzRE9Cu60od9sJ5
-7wO+l26OdOx4vD5df9ndO0bY55vp+qxqcqVFREREpsKkdo7N7Agzu9TMbjezTjMbKg2SA96Vdttl
-YN4EOpjIewa4utIOKeJ6Tbp53Aj13DHC9ifTdQ9ZJ7hoY7peNAHtumaE7RCpGqMdOx6npOu/NbMn
-Kl2I3GeIXOslNTiniIiISM1N2oA8M/sTIs2glOM6RAww60235xFpBHMnq01E3m3JulH2W1th/7wN
-I2wfTNcb3d3H2Cef+1urdo12bKlspGPHozTzxcIq959Tg3OKiIiI1NykRI7NbB/gy0QH8ApiEF6L
-uy8qDZIjG5S2xwPydlPL2LtMienarrzS8+hl7m5VXNZMZWNFRERERjJZaRVnE5Hhu4HXuPst7t5f
-2GdZheMG0vVoHcS2UcrGsin3d3FAXN4BFfafSLVq12gpKqWyWtynUmrIaG0VERERmfYmq3Nc6sTd
-Xpo1IS8NQHt2hePa0/W+ZtY0Qt0njnLe0rlGikY/nDvHWZV2MLM6YvoziGnKJkOt2nXGKOcoldXi
-Pv0mXZ9dg7pEREREpsxkdY5LMxgcPcI8xm8iFqooup/ISTZirt5h0hRmryhuz+lM1xVzYVMe8H+m
-m+8ys0q5sG8kFs5wYkGOCVfDdp1hZqcUN5rZYWSzVNTiPl2Wrl9gZn882o5mtmi0chEREZGpNFmd
-458Tnbijgc+Y2UKAtOTyXwGfA7YUD3L3PuAH6eYlZvastERxnZk9n5j+rXuU896Vrl+dX8a54B+I
-Ve32A35oZoentjWb2ZuAz6T9vuruD1V5f2uhFu3qBP7TzF5Y+lKSlqu+iliA5S7gO3vaUHf/MdGZ
-N+BKM/urlGdOOudiMzvXzP4b+NSenk9ERERkokxK5zjNq/vpdPPtwDYz20Ys6/xJ4BfAF0c4/ANE
-x/lA4DpiSeIuYlW9duDiUU791XT9KqDDzB43szVmdnmubQ8Ri3H0EGkK96a2bQe+RHQifwG8u/p7
-vOdq1K6/J5aq/iHQZWbbgV8RUfpNwHkVcr931+uA/yLywz8JbDSzbWbWSfz/rqRC9F9ERERkOpnM
-FfLeC/w58HsiVaI+/f1u4ByywXfF4x4GTga+TXTo6okpzD5GLBjSWem4dOwvgZcRc/p2E2kIq4Dl
-hf3+BziGmFFjDTHV2E7g+tTmF7h717jv9B6qQbu2ACcRX0w2EktVr0/1Hevud9ewrV3u/jLgRUQU
-eX1qbyMxx/N3gAuBd9TqnCIiIiK1ZiNPvysiIiIisneZFstHi4iIiIhMB+oci4iIiIgk6hyLiIiI
-iCTqHIuIiIiIJOoci4iIiIgk6hyLiIiIiCTqHIuIiIiIJOoci4iIiIgk6hyLiIiIiCQNU90AEZHZ
-yMweARYQS7+LiMj4rQY63f2gyTzprO0cX/KC0x1gYGCwvK2hbSEAXXOXArDFB8plm3b0AbB1Z+y/
-eMXKctmSfQ8A4LbfXg3Axo2Pl8sWLN4XgMbGJgDqcnWuW7cGgJ3bOwB44elnZXXOXwDAYxufzPZv
-3wrAqkXRzkPmzSmXPXH/fQC0proGbahctuj4QwDYnlYCf3RTR7mssyfuV19/tKt/MDuufzDKbr79
-YUNEam1DmeqJAAAgAElEQVRBa2vr4iOPPHLxVDdERGQmuueee+ju7p70887azvH6gej4NTe2lLct
-XrIcgNb9jgCgrndHuazr1psAePLeBwB48MF7ymX96bq9oz1uD2UdYN+wNv2RNgzmOuON8fAesnIV
-AB07s+M2D3QBMJDLbNnesxOAOx+Pzm338hXlsvp586OdndviftVn/dn95rQCsHZLlHV095fLdvRF
-e3r7Y1tfX1bW35/9LSI1t+bII49cfMstt0x1O0REZqTjjz+eW2+9dc1kn1c5xyKy1zOza8zMx95T
-RERmu1kbORYRmWp3rutg9UU/nOpmiOyRNZ84Z6qbIDKpZm3neN1tawBY0JylVQyuibSIxa2RMlFH
-fbls20CkGDQ3NMdxnVnKxbaUR7xfXTxcyxYtLZd5fdSxobMTgA6ynN6mlsgZXjQnUg7r67Ky3q5I
-ndi6ZXN5W9e2SIsYSgGs+9dngayDl+0HQM+CqKtpsKtcVtfcmO5PtK+5sbFcNuCRftE/NJjqzlI7
-+gey9oiIiIiI0ipEZIYxs5PM7AozW2dmvWa2wcx+ambn5fa5wMy+b2YPm1m3mXWa2Q1m9tpCXatT
-OsUZ6bbnLtdM7j0TEZHpYNZGjg/aJyKtLUPZoLOB+fMAGGprA2DL+rXlsu4dEYk9cH5EZue17VMu
-650/F4DWhojI1udGTm5c+ygA7WkwXbdnA/IOqouo8soUoe5pai2XDbZHZNrbs5kl5nt8V2ldtASA
-htZstoqW5nTsvnG/5nl2nNVFdNjSd53eviw63NWZBv6l2SoW52bA6OjtRWQmMbM3AV8ABoH/Bh4A
-9gVOAN4GfCft+gXgLuBXwAZgCfBC4Btmdri7fyjt1w58BLgAWJX+LlkzgXdFRESmqVnbORaR2cXM
-jgI+D3QCp7n7XYXyA3I3j3b3hwrlTcBVwEVm9kV3X+fu7cDFZnYmsMrdL96Ndo00HcUR461LRESm
-3qztHN955FEADA1mkeM5cyMCvN8BBwKwviXLR+554EEAOtMMab0tzeWywdY4rj3lEw92ZJHjnSlS
-PDdFeRc0N5XL9pmXcpN7I6p8/z13ZOdL13V9WW7znPqITHenKO+ieVnu8GBKP66rj3Yt2zeb5q0v
-TVs35LFTfrq2jhQ5rmuM6PXSllz7Fu6HyAzyVuI96++LHWMAd1+b+/uhCuV9ZvY54NnAc4CvT2Bb
-RURkhpq1nWMRmXWeka6vGmtHM1sJvJ/oBK8EWgu77F+rRrn78SO04RbguFqdR0REJoc6xyIyUyxM
-1+tG28nMDgZuAhYB1wE/BTqIPOXVwOuB5pGOFxGRvdus7Rw3zlkGQG9PNuVZZ0+kRXQ/Eks2NzQt
-KJctmB+D4LrSineDm7MBb71pEFtfSk0Y7MlSIawxBsEtWLgIgLm5VI0FW2J6t+2bNgKwZqivXDZ3
-XqRqHFaffUZ7TwyQ2zo/rvdZOLdctiMtG72wPg2668kG1t31+AYAmusiDaOpIUvHWDA3BiHWNUfb
-d/ZkKRd1rqncZEZpT9f7A/eOst97iQF4F7r7ZfkCM3s10TkWERGpaNZ2jkVk1rmRmJXibEbvHB+a
-rr9foeyMEY4ZBDCzevfclDN76Oj927hFCyiIiMwos7ZzPLctoq5NuQUxmpoi6rq9IwJQDfOWlcts
-XkRm582LwXMtuSmg69OUZ61pU//C7LjuxfvGHw1R2N+eLephbTEtHEecAMBxrdnDvWR+RK2XzMki
-wJ4WGxlM0WHLRaif+MOvAVjWFpHp3u4sCr1xSwzvm98WUegez9relz7nF6dp5XZ27yyX3bshi46L
-zABfAN4CfMjMfuLud+cLzeyANChvTdp0JvA/ufIXAG8coe4t6Xol8EgN2ywiIjPMrO0ci8js4u53
-m9nbgC8CvzezHxDzHC8BTiSmeDuLmO7tQuC7ZvY9YD1wNPDHxDzI51eo/hfAq4D/NLMfAd3Ao+7+
-jYm9VyIiMt2ocywiM4a7f9nM7gT+kogMnwtsBm4HvpL2ud3MzgL+L3AO8T53G/ByIm+5Uuf4K8Qi
-IH8C/HU65lpAnWMRkb3MrO0ct/fHhMUHLM/WBWjfGIPcGxbE4LuOrmyw3v3r4pdU64hfV4fqstSE
-A1MG4tP7Im2hvTdLTeiti0FtDQ2RtrCma3u5rHlFzKfc1hIVrGjOBsAtbIi5knf2ZHMmL1wa8yKX
-BtRtfOKxctmS+TFQf2dbpGP05gbd7XNAnNstrbC3YGG5bH6a23l5U6SGdD2ZpVMOzN5/v8xi7v4b
-4BVj7PNrYj7jSqzC/oPAB9NFRET2YnVj7yIiIiIisneYtaHD/m0RAW5bdWB5mw8tB6A3BXC3bt6U
-7Z8GsfXVx0PS199bLhtMU56trI8o7KZc2YaNEd3dpyXWGJhbl61AtyBFlR+847exb659LS0xxVr9
-3Gy6tpa586Nd7TFgsHv7tqx9vSnCnGJeq/bNpqFbsmJVtNPSVHP92WC9rv5ow52bI6K9em4WcT7/
-1IMQERERkYwixyIiIiIiyayNHPeuiVmebn1ibXlbQ5rKrYGIplpXlu97aEtMqXZAbyySMeBZhLU3
-Ta22ZE5Ee+c0LSmXDabp1zb1RLR3cdv8cpk3xsO7ftPWVFEWcV60b0SxL3jFy8rbTj4pVsf9wr9+
-BYAbf5PNKDXQF9O1DaZ851bL8pdf8orXAtCcosv33XpruWzf5bFKbv+qQwDo6+kslz3euxERERER
-yShyLCIiIiKSqHMsIiIiIpLM2rSK+atiBdmWliw9oq4uRrM1NMTdrt+ZpTm0b1gfZfNjerf63mxQ
-W3evA/DQQKwo17ggmx7u6JOeA8AAkY7R2FRfLnvw7jsAOGL/gwFYmFIbADwN/Fu/OVulbnNnpGYs
-2TfSNppbWsplzYORvmFpRb1t7dnqeT/4QSwCdsJxxwLw9Oe+MHef4zx3P3gXAA/cs6Vc9mB79tiI
-iIiIiCLHIiIiIiJlszZy7K0xcK25OVuwo3NnDGKrH4jFPDqH5pXL1hILZwxtvg+Ax/uyadR29MV3
-iDn1ERVesiBbPGR+Vwy2W7pPDHxrnJcNyOvvuxmApuXLAFj1/OeUyxoGImq9c0c2QO6mx2KRktbD
-jwTgKT1ZZLvx4QcBWN4a0e+5jXPKZe2d0Yb2tJBJ63EnlssOWXUYANva4/7cuP2mclldaysiIiIi
-klHkWEREREQkmbWR451bIrq7YkUWHW0biuhp45xYQvnR7VnObXN/5BUPWBsAO3IR3YUeZQe0RbTW
-PftO8cSjkauMRRR61bJV5bIjnxPTtA0MxBRrCxfvUy4b6o6p2Ra1ZpHmhjRlHI0R2W4+4ZTsDh0c
-0eTmoZQL3ZTdr9buiDBv3hqLmvz4lnvKZQdtjJzmtrmxaMjqw/+oXPbYE5rKTURERCRPkWMRERER
-kUSdYxERERGRZNamVeyTVqxbOpitZre4P1IMdkZGAw3N/eWyrYNrAOjdJ9IVVi48sFy2sCG+Q7Q0
-xIC8brJ0jPqmNC1cSxMABy6dWy5bOnclAAMNUWfbwrZymaWvJQ312b8gzTTH4GC0a6gva19ff6RO
-dHfHFG5D7ZvKZf3pDi1YsijuQ182CLF9Z6SXdLbHoL3F87JBiPXLsvpFRERERJFjEZkhzOwaM/Nx
-HuNmds0ENUlERGahWRs5bpgXA9DmpqnPABYeGIPR6ojP18Et28tlT3lKDII7+mkx9dmitoXlsief
-fBKA239/GwAbO7rLZasPiMh0V39Ea+998KFy2UnHRsS4vS4izgM92cIdzXMiwjw0mEVv61NkuqUp
-ItND2XoikP5uHIg2N2y6v1xUt/VOADwtItLfmn3n6e6IugYGYho7OrO279eEiIiIiOTM2s6xiAhw
-JLBzzL0myJ3rOlh90Q+n6vRSI2s+cc5UN0FEJpE6xyIya7n7vVPdBhERmVlmbef4OS96LgB1uQFv
-a9fFvL6btkX6wby2bHDaquUxB3Fjc8xl3Donm0d4y6ZIq1j32Iaoc8Gicll9SoFY1BxpGe0DWRs2
-dcVAuUNXxv5b65vLZQ1p/7r6LO2jPw3Aq7PY1tyarYLX2BhlffWx2l7/cWeXy7q2HQ3Azu0RIOvq
-zVbW6+mMNvR0RTpGX2+WVtHXO2UBNZFhzOwlwLuAo4DFwBbgAeAKd/98Yd8G4K+BC4GVwJPAt4AP
-uXtfYV8HrnX3M3PbLgY+DJwFrALeDRwBbAf+F/iguz9R8zspIiIzwqztHIvIzGBmfw78K/AE8D/A
-ZmBf4GlEB/jzhUO+BZwGXAV0Ai8kOsv7pv2r9R7g+cAVwI+BZ6XjzzSzk91902gH59p/ywhFR4yj
-LSIiMk3M2s7xgvkxIO/Xv/tDeduax9YB0JOmNzvqqKPKZQNEwGmoISK08xdno9Va5kaE+eSTnw7A
-vMXZYD1vieju+s0x2K6+cb9y2W1Pxnke2PwIAMeedGy5bElTnKc1t0Jec0PU1ZtWzxvwLKpc3xyR
-7K4Uad46lIWobcEB8UddnG9oezbwr28w/u72iHB3k5V19WqyEpkW3gz0AX/k7k/mC8xsaYX9DwGe
-6u5b0z5/A9wGvM7MPjCOqO/ZwMnu/vvc+S4hIsmfAP5s3PdERERmPPWORGQ6GAB2mXjb3TdX2Pf9
-pY5x2qcL+CbxfnbCOM75jXzHOLkY6ABeY2bNux6yK3c/vtIFUL6ziMgMNGsjx7fcnqY6a8gisweu
-OgiAww49BIB5c7Kc3s1b4hfUuSnivLN3KKussQWAE095CjB8+rXtfRFxLk33tnNrFvjyFAm+f21s
-625vL5cdsyIWBGmoGyxv23dpbFt+wIHp+CzveTC1YeH82FZfl7Xv0e2RSz3Un1Y3GchyjumLbUOl
-6/5c2dCw9EyRqfJN4J+Bu83scuBa4IZR0hpurrDt8XS9qELZSK4tbnD3DjP7A3AGMdPFH3Y5SkRE
-ZjVFjkVkSrn7p4DXA48C7wSuBDaa2dVmtksk2N3bi9uIyDOUZwSvysYRtpfSMtpGKBcRkVlMnWMR
-mXLu/nV3fwawBDgH+CpwOvATM9tngk67bITty9N1xwSdV0REprFZm1bR0RnTlJVSFADqLIJLpRSI
-Hbm0ivvvvy+O69gGQGNTVrYgrTh3ygkxZVpjYxacqt8en59t8yLtoX1HlrYwkNIc5nVGIOr3968t
-l92ZUib2mZMNkFu9PM4zNBSpFl292aC7JasiFWTlMTEo8KjDD8nKFqRBgRsiENa+LQus7UiD83bs
-6ASywYgAfd3Z3yLTQYoK/wj4kZnVAW8gOsnfn4DTnQF8Pb/BzNqAY4Ee4J49PcHR+7dxixaQEBGZ
-URQ5FpEpZWZnmZlVKNo3XU/UhNx/amZPL2y7mEin+La79+56iIiIzHazNnLcGoFcrrv26vK2RYsi
-hfDRR9cA0NaWpRQ2NcXUbes3xEIfPd3Z5/G5Z58BwPb2LQDsvyL7lbenIaLI27fH4hqd27Jo7P4r
-D4/ro2MgX9e+WYpjx6bHANjZlQ3Gf+TBiPhufCLGIfX1ZgP/Wm6+EYB9bospVW8/7Ohy2dL9Yyq3
-xx6LyPST6x4vl/WnSHFvT9yfgb7s836wX5/9Mi1cCewwsxuBNYAR8xifCNwC/HyCznsVcIOZfQfY
-QMxz/KzUhosm6JwiIjLNKXIsIlPtIuB3wHHA24iFOBqB9wNnufsuU7zVyCXpfMeSrZJ3GXBKcb5l
-ERHZe8zayPHxTz8SgNvuuKO87frrbwegKS3d/MQT2VoB/QOR39udIq3PPvOZ5bLDDou85XvuixTE
-hQtasuP64jhPM7I1DmWf470dERVuOzjacswxTy2XNXauiTrv/F152723R11z58d1Y3MW2a3rj2nX
-Oh6JqVM3PvpouWwoLRDSOifa1b01mwFr4xPrAejcEbnHQ55NAVfKbRaZSu7+ReCLVex35ihllxEd
-2+L2SukaYx4nIiJ7L0WORUREREQSdY5FRERERJJZm1axZGkMmjv3pdk0SvvtHyvFbnoy0g4GBrK0
-gqameCj2WRILbJ3w9GzA2+qVqwE4eOVKABYvXFAuG9gYg/T6UzrF3LmN5bKFrfF359qHANgymA3k
-22+/VQAccdpB5W0rT4xBfQNpMODgju3lss1p+rkntsSque3btpTL2rfE9HMDvWnFu5ZsVcCWBXF/
-BpvSanu5tArcEREREZGMIscisldx94vd3dz9mqlui4iITD+zNnK88sCY3uyQg1aXt73g2acD0NsX
-EdZ8EHXe/IisNjc3pbKssK8nFvPo64vIbn9Pd7ls8aIlAKxefTAA6zdni2qtWBaR4q2bI8pbtzUb
-ALipIyLBPd095W3d/RHJbmyJtiyYn0WolyxZGn/MXQjAohWrymWdaaGPjRvTAPst2YC8pkWx2NeS
-wbjPQ4PZgMGh/uzcIiIiIqLIsYiIiIhImTrHIiIiIiLJrE2raJs3D8hWvgPwch5FTH2an+fXLAan
-Wb2nfbPvDU1pMFtfXxzXRXZcaRrVtnlzABjMle2/LNIiGi227dyeDbDb0R6D6Hbu2Fbe1tMV6RH9
-aWDd+sGsrr40n/KWjs5oQ09uPuX+KOvpjXmRe3Or4PWmunrSCnl9A9lxA1ohT0RERGQYRY5FRERE
-RJJZGzm2+noA3LIFshrq4+7W1aVtlt390qxmg2lKtnxUuaEh6mpqipX1GnLH9TbHoLbDD4tp3h56
-7JFy2ZLWVNfSGET3WEcWJS4NjOvPRYe7+2NbV09EdLu6soF/jz/+OACdHe273NeBVEddXV2qOxtM
-uGNHrPjXX4oYN9Zn96spm3ZORERERBQ5FhEREREpm7WR47a0mEc+iuoDkZtbX1/6TmDFw8AjR3kw
-7QswmMLKlqLQjQ25nOOGKDtgvxUAtHd2lss2blgLwKL9Ylq5ZfuvKJft2Bk5wDs3ZdO7bWuPnOPt
-XRE57unJplrbkaZre3Jj7D+Qb1+6j6X86vqGLDq8sysix0Nparp8tNhz+dgiIiIiosixiIiIiEiZ
-OsciMqOY2RozWzPV7RARkdlp1qZVDAxE6kN9fXYXh+oitWAwpVM05NIP6lPKhJXSD+qzslJdvWmq
-tJ7cVGmlKdIG04C3Q1YfUC5b/2SsWLf2gXsBaJy3sFy2+uDYr645S23oGYrBfNt71gOwoytL0Sil
-SixZEqvu9eZSLkoD8kqDCIdyS/+1zokp5kor/g2VRh4yPHVERERERGZx51hEZKrdua6D1Rf9cI/r
-WfOJc2rQGhERqcas7Rx7iu7W5caclXJISoPTBnqyyOlQihx7iqyW9slvg9ICIdlAvt7+iNYOpGnY
-BoeyOhcubAPg9rvuA+BXP76mXLZgfiwQ0tw6t7xtIAWkSwHtbOAgDKRocHlwYC7q3dCQFjUZiOth
-EeG0f2lKu+wowBwRERERySjnWESmHQtvN7O7zKzHzNaZ2aVm1jbC/s1mdpGZ3WFmO82s08yuM7Pz
-Rqn/XWZ2d7F+5TSLiOzdZm3keKgvlk3uz0V5s2hwbBvILcAxNFSari1d+65R1dLy0w11Wfy1pSVy
-ejtTBDmfj+weEdxTTn56nC8Xjb7yv38CwNatW8vbBlNu8/btXWlL9t3FU/sG0uIhnmvfULkszjeY
-v1+DKXKczu0V7pfINPRp4J3ABuBLQD/wUuBkoAnoK+1oZk3AT4AzgHuBzwFzgFcCV5jZse7+wUL9
-nwPeCqxP9fcBLwFOAhrT+UREZC80azvHIjIzmdkpRMf4IeAkd9+atv8NcDWwAng0d8j7iI7xVcBL
-PH0rNbOPADcBHzCz/3X3X6ftpxEd4/uBk929PW3/IPBzYL9C/WO195YRio6otg4REZk+lFYhItPN
-hen6Y6WOMYC79wAfqLD/G4gBAe8tdYzT/k8Cf59uvjG3/+tz9bfn9u8boX4REdmLzNrIcW9v/Cpa
-N5j1/4cK+wxLTSj9mVabM/KD2oanJAz5YK6slI4xbNeoKqU0lDY+8/hjy2UL580H4De3/L687eE1
-jwPw5MaYAm7H9u3lsr7eOGcdpTZk7atL33Ea60qD7nLpGFb8I6fCJpFp4Lh0fW2FsuuB8gvQzOYD
-hwLr3P3eCvv/Ml0/Pbet9Pf1Ffa/ERjXHIfufnyl7SmifFylMhERmb4UORaR6aY06G5jsSBFhjdX
-2HfDCHWVti/MbRut/kFgS9UtFRGRWWfWRo67+yJa25gL5ZaCw3W2a8i0NIitPJgtf5z3pes0Ric3
-sG4w7Tcw2DfsGqA/taGvLw2Uy03ztt+B+wHw/EXZVG5bN8UvvFufjM/+zRs2lcs2b4pt2zp2RJ25
-iHi/xyDAnaVoeW4KuO6d3QA0Nsacdma5st5s8KDINNKRrpcBD+cLzKwBWAqsLey7fIS6VhT2Ayit
-rlOp/npgCbBu3K0WEZFZYdZ2jkVkxrqVSEc4g0LnFXgWuem63X27mT0EHGxmh7n7A4X9z8rVWfJ7
-IrXiWRXqfwY1fF88ev82btECHiIiM4rSKkRkurksXf+NmS0ubTSzFuDjFfb/GpFB/48p8lvafynw
-odw+JV/P1d+W278J+Ic9br2IiMxoszZy3N8XKQa5z8qywTQ4zYetghcpD0Mp9SGfeFEqGygtYefF
-oX3Q3NAIwJPd2SC/W25/CICu3mYAOnb2ZO2bkwbJ12WpFksHWwBoI+ZOXr7s4HLZ/NYlACzr2Bbt
-m7e0XLazP+ZF7uqO9tU3N5fLOjs70v2KNvf27cwarbQKmYbc/QYz+yzwDuBOM/se2TzH29g1v/if
-gLNT+W1m9iNinuNXAfsCn3T363P1X2tmXwL+HLjLzL6f6n8xkX6xnl3H74qIyF5i1naORWRGexcx
-D/FfAG8mBsldCXwQuC2/o7v3mdnzgPcCryE61QNpv3e7+7cr1P9WYsGQNwNvKdS/lphjeU+tvuee
-ezj++IqTWYiIyBjuuecegNWTfV7TimkiIsHMDiM65Ze7+6v3sK5eIj/6trH2FZkipYVqKk2DKDId
-/BEw6O7NY+5ZQ4oci8hex8yWA0+6ZzlSZjaHWLYaIoq8p+6EkedBFplqpdUd9RyV6WqUFUgnlDrH
-IrI3ejfwajO7hshhXg48BziAWIb6u1PXNBERmUrqHIvI3uhnxM91zwcWEznK9wOfAT7tyjcTEdlr
-qXMsInsdd/8F8IupboeIiEw/mudYRERERCRR51hEREREJNFUbiIiIiIiiSLHIiIiIiKJOsciIiIi
-Iok6xyIiIiIiiTrHIiIiIiKJOsciIiIiIok6xyIiIiIiiTrHIiIiIiKJOsciIiIiIok6xyIiVTCz
-A8zsa2a23sx6zWyNmX3azBaNs57F6bg1qZ71qd4DJqrtsneoxXPUzK4xMx/l0jKR90FmLzN7pZl9
-1syuM7PO9Hz6j92sqybvxyNpqEUlIiKzmZkdAvwa2Bf4AXAvcBLwLuCPzexUd99SRT1LUj1PAX4J
-XA4cAVwInGNmz3T3hyfmXshsVqvnaM5HRtg+sEcNlb3Z3wJ/BOwA1hLvfeM2Ac/1XahzLCIyts8T
-b8TvdPfPljaa2aeA9wAfA95SRT3/QHSMP+Xu78vV807gX9J5/riG7Za9R62eowC4+8W1bqDs9d5D
-dIofBM4Art7Nemr6XK/E3H1PjhcRmdVSlOJBYA1wiLsP5crmAxsAA/Z1965R6pkHPAkMASvcfXuu
-rA54GFiVzqHosVStVs/RtP81wBnubhPWYNnrmdmZROf4m+7+2nEcV7Pn+miUcywiMrqz0vVP82/E
-AKmDewMwB3jGGPU8A2gFbsh3jFM9Q8BPCucTqVatnqNlZna+mV1kZu81s7PNrLl2zRXZbTV/rlei
-zrGIyOgOT9f3j1D+QLp+yiTVI1I0Ec+ty4GPA/8M/Ah4zMxeuXvNE6mZSXkfVedYRGR0bem6Y4Ty
-0vaFk1SPSFEtn1s/AF4MHED80nEE0UleCFxhZsqJl6k0Ke+jGpAnIiIiALj7JYVN9wEfNLP1wGeJ
-jvKPJ71hIpNIkWMRkdGVIhFtI5SXtrdPUj0iRZPx3PoKMY3bsWngk8hUmJT3UXWORURGd1+6HimH
-7bB0PVIOXK3rESma8OeWu/cApYGkc3e3HpE9NCnvo+oci4iMrjQX5/PTlGtlKYJ2KrATuHGMem4E
-uoFTi5G3VO/zC+cTqVatnqMjMrPDgUVEB3nz7tYjsocm/LkO6hyLiIzK3R8CfgqsBv6iUPwRIor2
-jfycmmZ2hJkNW/3J3XcA30j7X1yo5+2p/p9ojmMZr1o9R83sIDNbXKzfzPYB/i3dvNzdtUqeTCgz
-a0zP0UPy23fnub5b59ciICIio6uwXOk9wMnEnJv3A6fklys1MwcoLqRQYfnom4AjgZcSC4Sckt78
-RcalFs9RM7sA+CJwPbEozVZgJfBCIpfzZuB57q68eBk3MzsXODfdXA68gHieXZe2bXb3v0z7rgYe
-AR5199WFesb1XN+ttqpzLCIyNjM7EPgosbzzEmIlpiuBj7j7tsK+FTvHqWwx8GHiQ2IFsAW4Cvg7
-d187kfdBZrc9fY6a2THA+4Djgf2ABUQaxV3Ad4B/dfe+ib8nMhuZ2cXEe99Iyh3h0TrHqbzq5/pu
-tVWdYxERERGRoJxjEREREZFEnWMRERERkUSd4xGY2RozczM7c5zHXZyOu2xiWgZmdmY6x5qJOoeI
-iIjI3kidYxERERGRRJ3j2ttMrOCyYaobIiIiIiLj0zDVDZht3P1S4NKpboeIiIiIjJ8ixyIiIiIi
-iTrHVTCzlWb2FTN73Mx6zOwRM/snM2ursO+IA/LSdjez1WZ2pJn9e6qz38z+q7BvWzrHI+mcj5vZ
-l83sgAm8qyIiIiJ7NXWOx3YosWTmnwELASfW9H4fcLOZrdiNOk9Ldb6OWJJz2Dr1qc6b0zlWp3Mu
-BN4I3AoMW2tcRERERGpDneOx/RPQAZzm7vOBucSyr5uJjvO/70adnwd+Bxzj7guAOURHuOTfU92b
-gaL7BXMAACAASURBVJcCc9O5Twc6gX/evbsiIiIiIqNR53hszcDZ7n49gLsPufsPgPNS+fPM7Fnj
-rPPJVOedqU5394cAzOw04Hlpv/Pc/b/dfSjtdx2xjnjLHt0jEREREalIneOxfcfdHyxudPergV+n
-m68cZ52Xunv3CGWlum5M5yie90HginGeT0RERESqoM7x2K4ZpezadH3cOOv8zShlpbquHWWf0cpE
-REREZDepczy2dVWU7TPOOjeNUlaqa30V5xURERGRGlLneGoMTnUDRERERGRX6hyPbb8qykaLBI9X
-qa5qzisiIiIiNaTO8djOqKLs1hqer1TX6VWcV0RERERqSJ3jsZ1vZgcXN5rZ6cCp6eZ3a3i+Ul3P
-TOconvdg4Pwank9EREREEnWOx9YHXGVmpwCYWZ2ZvRj4Xir/mbvfUKuTpfmUf5Zufs/MXmRmdenc
-pwI/BnprdT4RERERyahzPLa/BBYBN5jZdmAH8N/ErBIPAq+fgHO+PtW9D/A/wI507uuJZaTfN8qx
-IiIiIrKb1Dke24PACcDXiGWk64E1xBLOJ7j7hlqfMNV5IvAp4NF0zg7gq8Q8yA/V+pwiIiIiAubu
-U90GEREREZFpQZFjEREREZFEnWMRERERkUSdYxERERGRRJ1jEREREZFEnWMRERERkUSdYxERERGR
-RJ1jEREREZFEnWMRERERkUSdYxERERGRpGGqGyAiMhuZ2SPAAmK5eRERGb/VQKe7HzSZJ521neMv
-fuQVDtA0d05521BjIwD9dREwH2rI7n7TnFYA5i2YD8Dc1vnlspaGKKsbituDvTvLZYO9OwDo7e4E
-oKNjW7ls29Z2ALZ3bB92DdDd1RPH7ewrbyst5b1kv0UAPPWYo8plBx10CACtLXMB6OvrL5dtfHIT
-AA8/9AgAO7uy9s2ZE/vPTY9DQ312n/v6o463feDrhojU2oLW1tbFRx555OKpboiIyEx0zz330N3d
-PennnbWd44a6Un9vqLytf2gAgB6irN8Hy2WDFh3nltKGuuyhqW+KznFjXRMAlus4Dw0uBGCORye3
-dVFnuaxxzkYAmlu3ALBgQVe5rKsjOs6d27LO9I7t0XnemTrRWzd2lMtW7Bttnz8vWtg6py3Xvnlx
-fwbrAVi/dk12v/qjXQODqTNtXi6z3N8iUnNrjjzyyMW33HLLVLdDRGRGOv7447n11lvXTPZ5lXMs
-ItOGma02Mzezy6rc/4K0/wU1bMOZqc6La1WniIjMHOoci4iIiIgkszatYt6ySDsYqsv6/0ODkUZR
-SrQwy1JtG9NuDfWRmtDQ2FQuq2tsBqC+KeXtNmRlfX2R37t585MAbOvIzte+I47b3hUpG03MK5e1
-tEV6xGDuX9DUGvnBO7dHOsW2zU+Uyzasi/vT2Bzta1uyNKtrQdS16rCVACxdmp1n2+bNAHSkNI6e
-nt5yWU9PDyIz3JXAjcCGqW5IJXeu62D1RT+c6maITKo1nzhnqpsgskdmbedYRGY/d+8AOsbcUURE
-pEqztnPcnGad6BsYKG+zFDWtH4rYsVkW5W1JA/CaGyLK25iuAZqaIjLbUB8D87ZuzT6Lb/ztjQDc
-fPPNAGzemkVjd+7oTnXG7da6bHDg/JY49+IF2Wwaq/dfFtv2ifMNDWYjNLdui8F9DRviuJ7BbEaK
-hYsjitzUEu1bsmRRdp40S8W2bfF4bE6RZIANG7LItMh0Y2ZHAJ8ATgeagd8DH3X3n+b2uQD4N+BC
-d78st31N+vNpwMXAy4H9gY+5+8Vpn2XAPwAvIqZcuw+4BHh0wu6UiIhMe7O2cywiM9pBwG+AO4B/
-BVYA5wNXmdlr3P2KKupoAn75/9m78/jKjvLO/5/nrtqlVu+L3e02ttvGxoAJi02w2bewDgwh8Ets
-hkwghD35hUASbJgQXhPCmoDDJOCJwwQIGULyAwIZwKzjl8Erttt7q/d90a6ru9Tvj6fuOceypFZ3
-q7vVV983L72OVFWnTl31RS49eqoK6Ae+CwwBWwDMbBnwM2Aj8JP4sRq4PradMzObaTuKTcfSj4iI
-LAwtOzmuTXqUtlpNI8f1mpfV437CVshs79vMP657m1wt3ebswE7PJ77rjgcBuPXWu5K6rVu3xef4
-lmnFtmQzuOSbW4ifDWX2H94/5p/vzOy1vHO7R6QvefwaAC688HFJXVu7R4zHxv2+iW1bkrrhQ75V
-XP+S5QB0dvcldeUYTV6ydKmPr1xO6vKZ6LjIAvMs4GMhhD9oFpjZX+ET5uvN7NshhKEZ73argXuB
-K0MIo1PqPoJPjD8ZQnj3NM8QEZFFSrtViMhCNAh8KFsQQvgF8CWgD3jVHPt579SJsZkVgTcAw3jK
-xXTPmLMQwmXTfQD3HUs/IiKyMGhyLCIL0W0hhOFpym+K1yfNoY8J4K5pyjcBHcAdcUHfTM8QEZFF
-qGXTKsYn/L95IbNdW77gvwvk855OkM+kGJTb/HOL35KHH0rX5Pz8lrsBePABT6GoTKQn6/V0+UK3
-tna/v6enM6lrbh2Xi9vJDR1J/wo8OuzHTmePcx6f8AV4t//Sn93IpSkaT3vq4wFY0uWvZ3z0UFI3
-dMTTKkaG/LS9ru709LzevniCX7svzCvn0+9HT1fL/vPLmW/vDOXNVaS9M9Rn7QvNM9kfrXnv0Z4h
-IiKLkCLHIrIQrZyhfFW8zmX7tpnOR2/ee7RniIjIItSyocMQqgCU2tJIbkfZP8/Ha66URmYDHk3e
-t8v/u/nzm+9M6rZt8wBTR7tHifv72pO6ZsQYPEq8YllPUpePv3ocPuJ9Nurp8zo6m33kk7KhIY8m
-j4/72O++Pz3XoNTu7S+9ZD0AnW2ZA0Vq/uyJMb//yP40IFaJB4p0d/vYS6X0AJNxHQIiC9eTzax7
-mtSKq+L19hPo+z5gDHiimfVOk1px1WNvOT4Xr+3lVh2IICJyRlHkWEQWol7gT7MFZvYUfCHdIH4y
-3nEJ/pvzl4BupizIyzxDREQWqZaNHIvIGe1HwJvN7GnAT0n3Oc4BvzOHbdyO5v3Ac4F3xQlxc5/j
-1wHfAl5+gv2LiMgZqmUnx+1tnt7Q3pmmOZTafB1Osd2vVkjTI0ZG/fS8ndseBuChB7cndcPDnn5Q
-Lnn6QkdHuiBvsrm/cdHTG0M93Tu4Le4x3Fb21ImRzGK4kTFffDc2UX3MGJpbMxeq6Yl69zzwCAD5
-vFduXJemS3a3+WK7zqKnbUzWDid1lWF/Tm20Gu9P/1hQraWvQ2SB2QK8BT8h7y34CXm34SfkfedE
-Ow8hHDCzK/D9jl8GPAU/Ie+twACaHIuILFotOzkWkTNPCGEAyJzOwyuO0v4G4IZpyjfM4Vl7gDfN
-UG0zlIuISItr2clxsejR1LZyJnLc0fuoay4TOS62+38LN1xwHgC3/CJd77Nr5w4AKrkjAAweSJ/T
-3ev9n3+hnxS7eu3ZSd2SPq8r7d0PwNjYZFK3bZtvC3fgQLolW63h0edc3GouNNLT/drzPuaJsRU+
-lkolqSvHf8VGLi7Oz57SV/LKas37qjbSaLQVW/afX0REROS4aEGeiIiIiEjUsqHDjo4lAJTj9msA
-+ZiTmy94ZNYK6TZq+eCR42Kbb3XW1pkeELJqVT8APWWPNFcm0qht39KlAKyLOcBDmeiwFWPkN+d9
-LV22PKlbum8fALXKWFLWzFEuFP168NDBpK4Qc4VLMSpc6kyj3rkOH3su/mvmLM17zsVDUEoxqJzL
-pX8tbh5OIiIiIiJOsyMRERERkUiTYxERERGRqGXTKjp7PIWhWErTI8g3V655akF9Mt1GbWzMUyUG
-9/uiO2ppykV7TNFoj6fMrVval9SVyt7Xjj0DAFRr6fOKRV+5V4rpG7nMabZnr3+c93XWhqRs/z5f
-uHdoyFMtOpcsS+p6l/mpfsvW+cm2y9auTsdQ8t9xLMSt2arpyXfNsnzex1AopP/kjcZMp+uKiIiI
-LE6KHIuIiIiIRC0bOa6bR0Xzlh50EZrbmMVTNuqZbc2o+UK63rilW293uh3a/gN+qMZo1etCuTOp
-W9XpUeVK1SPOhUJ632TN24+MjHpdZjFcf59vzTY4OJqU7T3gfdTisHL5dHxnrfNI+Ib1fl2yJF2Q
-F2IEuDbZfK3pa86bR4wtXrOHgNRq6VZxIiIiIqLIsYiIiIhIomUjx4eHPX+3mDnoIo3bxlzbkObc
-NqOvHe2eh7x+fZrv+/C2nQAcGvYo7+DYrvQ5MfK7dpW3b4sHjABMVjyCW61634cOp1uzDQz4ISDD
-Q0eSslLMB7bgYzjvvDVJ3UXnr/PxlbyuOp72FWIAOJ5kTQiZyHGMFBcK8XjrkP4+NJnJuRYRERER
-RY5FRERERBKaHIuIiIiIRC2bVjE+PgjA5GS6JRsxpaB5Mlw+lzkhL251VurwE/I2nnd2Urf/4DgA
-t9/5MABDI+mpdnsPeC7D/iFPc1izPE2FqE94esP+vX4aXmViPKmbrDQX4qUn6jXTIc7f6H087WkX
-JXXLl/n2caOj/uxaLe2rUW+mRzRfX7oosFTyhXtt5v/UxXz6mmuWWZAoIiIiIooci8iZxcwGzGzg
-dI9DRERaU8tGjtvjFm6hkS5Oa0aOizmPDhfzxaSqUPTPm1vALe1Nt2u74imPB6AcA60/veWOpG68
-5gdudPb1AzAyki6wmxxtbpXWjNCmCwDrMdpbKKTjO2ejL7p70UuuBGDtmuVpX/Fgj0bNx55Lh06u
-mPkCyFlH8nmx5J8X2srx61KmoRbkiYiIiGS17ORYROR0u3vnIBve983TPQw5yQY++tLTPQQRmUdK
-qxARERERiVo2cpyrVgCo19NFZ414Il7VYhpCsZy2b/NFbEkCxGR6X1tMtXhc3Pt4x/Z0L+Pb7n0A
-gPGxYQD6l65O6kLwxW8jo143Ppqehof5Qrwl/d1J0VOe8mQA1py1FoB8IU3DKBV9l+YyPuZCIf29
-plh69D+jkb6ufN7TKAr5QrwvXZA3WdUJebIwmZkBbwPeCpwLHAS+DnxghvZl4N3AG2L7GnAn8JkQ
-wldn6P8dwO8AG6f0fydACGHDfL4mERE5M7Ts5FhEzmifxCevu4HPA1XgFcDTgBKZbV7MrAR8B7gS
-uA/4a6ADeA3wFTN7Ygjh/VP6/2t84r0r9j8JvBx4KlCMzxMRkUWoZSfHtbjOrV5Lo6+Tk83Fb16W
-r6TR4fEJj6KG5vZulkZmm1HX3iVdAKxasyKpKz0UT7qL27Zt2bIlqYuBavJ4n7n0iD7yeW9fzESA
-V67yBXildo/2TlTSSHMjLixsbjlXKKTbteVL5VjnEXEjXXSXRI4LhUddAaik28iJLBRmdjk+MX4Y
-eGoI4VAs/wDwA2A1sDVzy3vxifG3gZeH4GdGmtl1wC3AH5nZ/xdC+Fks/1V8YvwA8LQQwpFY/n7g
-/wBrpvR/tPHeOkPVprn2ISIiC4dyjkVkobkmXv+sOTEGCCFMAH80Tfs34b/xvqc5MY7t9wEfjl++
-OdP+tzL9H8m0n5yhfxERWURaNnLcPKfDLH2J4xMeyq3FsHKpmNaVSv57Qih49LVUTrdHK7f7QRqV
-Uf/v6OB4GnGtx/4bMSps+TQanYuHbMSUZSwTOm5+XpmsJGWjYx4prlS9/4lKWjdZ8a3cQsM7y0aA
-izF3ulRuj68r3cqtVGyLr6/0mPsqihzLwvTkeP3hNHU/AZL9D82sG3gcsDOEcN807b8fr0/KlDU/
-/8k07W/G85XnLIRw2XTlMaL85OnqRERk4VLkWEQWmuaK171TK2Jk+MA0bXfP0FezvG+O/dfxxXki
-IrJIaXIsIgvNYLyunFph/qegZdO0XTVDX6untAMYmqX/PLB0ziMVEZGW07ppFaM+7+/tTbddKxY9
-jWBwyANDk4U0BWJJTEkot/miu2KpPe0sLn6zki+Gq4e0rlT0z3PjIwAESxcAhpyPoRG3dLPMIr8G
-nlYxMp7+BffhLTsA6OvztIhS9gS7Sc8TqU74dbyW3heav+MUSvE1pONrb/e+yiV/DYVCmi5SqWgr
-N1mQbsPTEa4EHplS90wg2Y8whDBsZg8DG83svBDCg1PaPzvTZ9PteGrFM6fp/+nM48/Fi9f2cqsO
-iBAROaMociwiC80N8foBM+tvFppZG/Dn07T/AmDAX8TIb7P9MuBPMm2a/j7Tf2+mfQn4yAmPXkRE
-zmgtGzlevtL/MlrMLLorlDxau7bD/5oaMu3LZY+sdsdI8/hEsuaHWt0jrG3xoJD2jnQbtRUrlsW+
-PSK7+0AmjTFGiq0Rr6QL8nLBP7eQlo3HVYS1Uf+rb3s5HWExeBS5nPNx1XNp1Hcyblc3GRfYVRrj
-SV2jEfuseTS5mE+3eatMKnIsC08I4adm9hng7cDdZvY10n2OD/PY/OKPAS+O9Xea2bfwfY5fC6wA
-/nsI4SeZ/n9oZp8H/itwj5n9c+z/ZXj6xS7S84BERGSRUeRYRBaid+KT40H8FLvX4wd9PI/MASCQ
-bMH2fNLT896Ob9f2IPAbIYQ/nKb/twLvAUaAtwC/ge9x/HyghzQvWUREFpmWjRx39sRc27bMEdEj
-/rtAMxJcr6fR4VzcWq13SQ8AbZW07sig5xPXxnxrtYmJ9HCO/qW+CP7c884F4Ic/TneHGhn2qG3z
-EJFSJt+3u9PH1dmRlg0f9q3ixgb9v8u9/WnucC5u31rMxyh0JgJcjcdMV2MqZi2zDV0xbkPXFiPj
-zYNCAPLKOZYFKoQQgL+KH1NtmKb9BJ4SMae0iBBCA/hE/EiY2XlAF7D52EYsIiKtQpFjEVl0zGyV
-ZVfIelkHfmw1wNdP/ahERGQhaNnIsYjILN4FvN7MbsJzmFcBzwXW4cdQ/9PpG5qIiJxOLTs5bu9a
-AkChkCxeJ1/sBCA0l+JlVuSNxdPpBod8O9R8Lk0/IJ50NzzidWMTI0nVmjVnA/CES/3QrSNH0u1U
-b7v1Th+DeQrFxvUbkrqebk93qFbTFI3hoX0A7NnrW82VLD23oCP+S7XH7eTyuTToVW/ubJWc7teZ
-1LW1+eelko/hUWkVueySRJFF5T+AS4EXAP34qXgPAJ8GPhnTOkREZBFq2cmxiMhMQgjfA753usch
-IiILT8tOjjs7POpq6U5pNJrBoHidrKaHbJTiNm/Vikdyy5nt2tpLvrhvYtQXydcyi/XqcTu0sZFh
-AC695IKkrr/Ho7Zjo76Qr72cLrDbsX27j6mR9jU65v1v3e6n45ZL6aK7lUu744vwiHEmrk0+n4/t
-43ZthY70deXi4R/md+TS8xMoFNPPRUREREQL8kREREREEpoci4iIiIhELZtW0VxsV6lU0qKGF+Zi
-GkI+87tBe9wHuK3k35L29u6kbuuAH8h1cJ8vtutqS+v6e/xEve42T4HIN9Jvaf8lGwE4csRTLg4e
-PJLUtbX7GEZG0tSOZrJEoeDpGKvXnJPWFKrx9fgYssuFOuMj2wrNxXppLkm+edBXzVM2QjbPJKff
-jURERESyNDsSEREREYlaNnJcLHgkt1ZNF7xVah5Fro57FDUbRO3t8whwW6dHkCuZRXf5ovfV2ekR
-3Y62dLFeV7t/Xqv4aXiNahqpLuZ9+7TuDl8oV7B0AdzYkLfvbBtPyno64sK/GO0eq6RR5fUrlgEw
-MuSR4MpoerrteGxXKvviwEIu3R4uVx+PrzXzYqNGQ7tViYiIiGQpciwiIiIiErVs5Lhe96jo8uUr
-M2UeDZ6YmAAenY9cjtusNZrR3Xwa5e1ftsLrGvcAYJnTQzrbPao8Puz5xJXqWFLX0ebf3sm6R3Yn
-x9OI7vJ+32qulDmUY/eY33sgHiSy78DhpO6ss/x1lOKhHsV85hCQSe9/eMxfl42lEWczH2sxOSAk
-3R7OeGw0WURERGQxU+RYRERERCTS5FhEREREJGrZtIrOjh4ACvlSptTTKro6vayjvZHUVOJpeRM1
-b9Ow9PeGwSHfim3//v0A1CbTdIxG1Rf3tbcVH/VcgHLRy+pxUWAxn6YxtHX54rsdW7cnZbt37vSx
-xK+379yd1K1btxyA5Us9rSJfSPuaqHs6Rj2mbzTS4TE85Av3QvDX2tWVbkPXlllYKCIiIiKKHIuI
-YGY3WTNBX0REFrWWjRyX46EeIXNaRvMQkOYebrlcuuiureS/J0yO+cK6yfE0/Hpk714Ahg4eAqBa
-mUzqdm336O7Sfo8Yd3d3JnXjQ95XPdTiM9LndXTFbeE625OylatWA3Bw1BfWHRlOF/cNjfpivmXL
-/L5qZou6RnyNtapfq+NpRHz4iL+OoWGPfpfK6aLAYqmMiJw8d+8cZMP7vnnC/Qx89KXzMBoREZkL
-RY5FRERERKKWjRxXKn74Rb6QRmsbMe+2GfmtN9IIay5Gk0cOjwBw/30PJnX33HUvAKNDXtfbk0aH
-K5Me3R0e9b4KmS3WajEfeWLSo7W9S/qSusFB366tkBnfipW+XdvEXo84Hx48lNRtHfDodW9nFwAb
-zlqdPqfokeaHdz/krznzuto7uuJrjQWZw0DGxycQOdOY2VOB9wLPBJYBh4BfAn8bQvhqbHM18DLg
-ScBqoBrbfC6E8A+ZvjYAWzJfZ1MrfhhCuOrkvRIREVmIWnZyLCKtx8x+G/gcvrr2X4EHgRXAU4Df
-Bb4am34OuAf4EbAbWAq8BLjRzC4IIfxJbHcEuA64GlgfP28aOIkvRUREFihNjkXkjGBmFwGfBYaA
-Xw0h3DOlfl3my4tDCA9PqS8B3wbeZ2bXhxB2hhCOANea2VXA+hDCtccxrltnqNp0rH2JiMjp17KT
-4wMH98XP0r+SNk/Is5hakN3KrK2tuTDOt187fChduDY+7gvq1p3l/+1tK2dPlvO0ilwubqMW0lSF
-ctkXvDXwvg8dGk7qBoe9/3qaAZGkgKxftwaAlcuXJ3U9Hd5He9nLatWOpG5oxFNI+pb7fZOjQ0ld
-ZcyfubrP6+rVdDHhwYMHEDmDvBX/mfXhqRNjgBDCjsznD09TP2lmfw08B3gu8PcncawiInKGatnJ
-sYi0nKfH67eP1tDMzgb+EJ8Enw20T2mydr4GFUK4bIYx3Ao8eb6eIyIip0bLTo6bC/IajXTLs2bk
-uBgP5yjHgzsAQjwgpFTyqHA+n0acjwweBGBs1L9dfb3pgrxyKYZ+42K/fLq+Dss1t1hrhofT5y1b
-5ovvurrTCHB3n28Hd/CgL/ybGE/HXql49HrPbo/2lorp4SYdPb0AjMZFgXv2DKbjK8Qt6up+f2U8
-jYiHeua0EJGFr7midedsjcxsI3ALsAT4MfBdYBDPU94A/BagfQxFRGRaLTs5FpGWcyRe1wL3zdLu
-PfgCvGtCCDdkK8zs9fjkWEREZFqaHIvImeJmfFeKFzP75Phx8frP09RdOcM9dQAzy4cQ6jO0OWYX
-r+3lVh3gISJyRmnZyXG15ikDvb29SVlnp6cwNE/Gq1VrSd3EhKdhbNuxDYC77709qTtyxFMZzt1w
-HgBt5fbH1BXjd3LlsjR1YnLSF+mNTfj1YGZBXmd3NwCHDh9OylbVfLHc4BFPi9izJ10w19+/yscc
-22wZSFMiLrhoo7/mhr+e/hUrkrqOko/n0L49/trz6WLCvr5uRM4gnwPeAvyJmX0nhHBvttLM1sVF
-eQOx6Crg3zL1LwTePEPfB+P1bDL7HouIyOLTspNjEWktIYR7zex3geuB283sG/g+x0uBX8G3eHs2
-vt3bNcA/mdnXgF3AxcCL8H2QXzdN998DXgv8bzP7FjAObA0h3HgCQ96wefNmLrts2vV6IiJyFJs3
-bwZfK3JKWQjh6K1ERBYIM3sG8PvAr+KL9A4Ad+En5H0ttrkc+G/4CXkF4E7gY3je8g+A67J7GptZ
-Hvgw8OvAWfGeEzohz8wqQD4+W2Qhau7FPVuaksjpdClQDyGc0kXUmhyLiJwEzcNBZtrqTeR003tU
-FrrT9R7NncqHiYiIiIgsZJoci4iIiIhEmhyLiIiIiESaHIuIiIiIRJoci4iIiIhE2q1CRERERCRS
-5FhEREREJNLkWEREREQk0uRYRERERCTS5FhEREREJNLkWEREREQk0uRYRERERCTS5FhEREREJNLk
-WEREREQk0uRYRGQOzGydmX3BzHaZWcXMBszsk2a25Bj76Y/3DcR+dsV+152sscviMB/vUTO7yczC
-LB9tJ/M1SOsys9eY2WfM7MdmNhTfT/9wnH3Ny8/jmRTmoxMRkVZmZucCPwNWAN8A7gOeCrwTeJGZ
-XRFCODiHfpbGfs4Hvg98GdgEXAO81MyeEUJ45OS8Cmll8/UezbhuhvLaCQ1UFrM/Bi4FRoAd+M++
-Y3YS3uuPocmxiMjRfRb/QfyOEMJnmoVm9nHg3cCfAW+ZQz8fwSfGHw8hvDfTzzuAT8XnvGgexy2L
-x3y9RwEIIVw73wOURe/d+KT4IeBK4AfH2c+8vtenYyGEE7lfRKSlxSjFQ8AAcG4IoZGp6wZ2Awas
-CCGMztJPF7APaACrQwjDmboc8AiwPj5D0WOZs/l6j8b2NwFXhhDspA1YFj0zuwqfHH8phPDGY7hv
-3t7rs1HOsYjI7J4dr9/N/iAGiBPcnwIdwNOP0s/TgXbgp9mJceynAXxnyvNE5mq+3qMJM3udmb3P
-zN5jZi82s/L8DVfkuM37e306mhyLiMzugnh9YIb6B+P1/FPUj8hUJ+O99WXgz4G/BL4FbDOz1xzf
-8ETmzSn5OarJsYjI7HrjdXCG+mZ53ynqR2Sq+XxvfQN4GbAO/0vHJnyS3Ad8xcyUEy+n0yn5OaoF
-eSIiIgJACOETU4ruB95vZruAz+AT5X8/5QMTOYUUORYRmV0zEtE7Q32z/Mgp6kdkqlPx3vpbfBu3
-J8aFTyKnwyn5OarJsYjI7O6P15ly2M6L15ly4Oa7H5GpTvp7K4QwATQXknYebz8iJ+iU/BzV5FhE
-ZHbNvThfELdcS8QI2hXAGHDzUfq5GRgHrpgaeYv9vmDK80Tmar7eozMyswuAJfgE+cDx9iNyXwwY
-8QAAIABJREFUgk76ex00ORYRmVUI4WHgu8AG4G1Tqq/Do2g3ZvfUNLNNZvao059CCCPAjbH9tVP6
-+b3Y/3e0x7Ecq/l6j5rZOWbWP7V/M1sOfDF++eUQgk7Jk5PKzIrxPXputvx43uvH9XwdAiIiMrtp
-jivdDDwN33PzAeDy7HGlZhYAph6kMM3x0bcAFwKvwA8IuTz+8Bc5JvPxHjWzq4HrgZ/gh9IcAs4G
-XoLncv4CeH4IQXnxcszM7JXAK+OXq4AX4u+zH8eyAyGE349tNwBbgK0hhA1T+jmm9/pxjVWTYxGR
-ozOzs4AP4cc7L8VPYvo6cF0I4fCUttNOjmNdP/BB/D8Sq4GDwLeBPw0h7DiZr0Fa24m+R83sEuC9
-wGXAGqAHT6O4B/gq8DchhMmT/0qkFZnZtfjPvpkkE+HZJsexfs7v9eMaqybHIiIiIiJOOcciIiIi
-IpEmxyIiIiIikSbHIiIiIiKRJsciIiIiIlHhdA9Aphe31NkA/EsI4Y7TOxoRERGRxUGT44XrauBK
-YADQ5FhERETkFFBahYiIiIhIpMmxiIiIiEikyfFxMLMLzex6M3vAzMbM7IiZ/dLMPm1ml2Xalc3s
-tWb292Z2p5kdMLMJM9tqZl/Kts3cc3U8uejKWPRFMwuZj4FT9DJFREREFh2dkHeMzOztwCeAfCwa
-BapAX/z6hyGEq2LbXwP+LZYH4AjQDrTFshrwphDCjZn+Xwd8CugHisAQMJ4ZwvYQwq/M76sSERER
-EVDk+JiY2WuBT+MT468BF4UQukIIS/Czvd8I3Jq5ZSS2fxbQFULoDyG0A+uBT+ILIj9vZmc3bwgh
-fCWEsAr4WSx6ZwhhVeZDE2MRERGRk0SR4zkysyKwBVgL/GMI4Tfmoc+/A94EXBtCuG5K3U14asU1
-IYQbTvRZIiIiInJ0ihzP3XPxiXEd+IN56rOZcnHFPPUnIiIiIidA+xzP3dPj9c4Qws653mRm/cDb
-gBcDFwC9pPnKTWvmZYQiIiIickI0OZ67lfG6ba43mNlFwPcz9wIM4wvsAlAClgCd8zRGERERETkB
-Sqs4ub6IT4xvA14EdIcQekIIK+Oiu9fGdna6BigiIiIiKUWO525vvK6fS+O4A8VT8Rzll8+QirFy
-mjIREREROU0UOZ67m+P1CWa2dg7t18Xr/llylJ83y/2NeFVUWUREROQU0eR47r4H7MQX0/3FHNoP
-xutKM1sxtdLMLgFm2w5uKF77ZmkjIiIiIvNIk+M5CiFUgffGL19vZl81s03NejPrN7PfNrNPx6LN
-wA488vsVM3tcbFc0s1cD/4EfEjKTe+L11WbWO5+vRURERESmp0NAjpGZvQePHDd/sRjBj4Ge7vjo
-V+En6TXbDgNlfJeKbcAHgBuBrSGEDVOeswm4M7atAfvwY6p3hBCeeRJemoiIiMiip8jxMQohfBx4
-Er4TxQBQxLdluwv4FPDuTNuvA8/Bo8TDse1W4GOxjx2zPOc+4PnAv+MpGqvwxYDrZrpHRERERE6M
-IsciIiIiIpEixyIiIiIikSbHIiIiIiKRJsciIiIiIpEmxyIiIiIikSbHIiIiIiKRJsciIiIiIpEm
-xyIiIiIikSbHIiIiIiKRJsciIiIiIlHhdA9ARKQVmdkWoAc/Zl5ERI7dBmAohHDOqXxoy06O//I9
-vx4ACsV8UlYu+eelctGvpbakLp/PxTJvUyylQXUzP2K7QD5+bUldIe/fwoC3KRbSb2mhUIztm89I
-6+r1+qPqAPL4FznzZzdCI6mr1Wp+X7MsO4Z4ArgFL5vIpWOvxPZWr8V+6kndxHgVgP/09r/MjEJE
-5klPe3t7/4UXXth/ugciInIm2rx5M+Pj46f8uS07ORaRM4+ZbQC2AP8zhHD1HNpfDXwRuCaEcMM8
-jeEq4AfAdSGEa0+gq4ELL7yw/9Zbb52PYYmILDqXXXYZt91228Cpfm7LTo7zeQ+GFvJpULRYKjyq
-rpiJKheLHuXN52KUuJDWWYwK54NHZLOR42bEuVmUrUsjxvlHfe1CLEujvGk7b1ibrCV1zSjyRGXC
-2+TT+wrlLi/LlfzrXDaV3CPFuYZHiWvVNHJMo2X/+UVERESOi2ZHInIm+zpwM7D7dA9kOnfvHGTD
-+755uochLW7goy893UMQaSmaHIvIGSuEMAgMnu5xiIhI62jZrdzy+ZynPFhIPqrVCtVqhcnJCSYn
-J2g0GslHLpcjl8thzQ9LP0LAP+L/Go3sh9/fbJPts/lRq9Ue85HUh5B+AA2g2mhQbTSoh5B81BoN
-ao0GQyPDDI0MMzw6knxUglEJRi3fQS3fQVfv8uSjp6efnp5+8vkS+XyJYqGcfJTL7ZTL7af7n0pk
-Wma2ycz+xcwOmdmomf3EzF4wpc3VZhZi7nG2fCB+9JjZx+PnVTO7NtNmpZn9nZntNbNxM7vDzH7r
-1Lw6ERFZqBQ5FpGF6Bzg/wK/BP4GWA28Dvi2mf1GCOErc+ijBHwf6Ae+Cwzhi/0ws2XAz4CNwE/i
-x2rg+thWREQWqZadHBcKMShu6XZo1VoFgErFF7otXboiqVu9ejUA+/fvASCEkNQ1F8PlYqA9R7qy
-rtGIW6XFRXS5zGK4pIdMX03N9oV8uvAv5LysEbd5o5BZdBcX2xHbjFfSrU26zfvYsXO/t913OKk7
-b+NaAMoljxDXc5kFeTQQWaCeBXwshPAHzQIz+yt8wny9mX07hDB0lD5WA/cCV4YQRqfUfQSfGH8y
-hPDuaZ4xZ2Y203YUm46lHxERWRhaNq1CRM5og8CHsgUhhF8AXwL6gFfNsZ/3Tp0Ym1kReAMwDFw7
-wzNERGSRatnIcXObNsulUd4wGaOu4x5Bbm9P823XrvUI68GD+wCYnEwjs5bEgP13iXwujfYWcvEQ
-kBgdzkacp56sYfbYszYsE2luxOpmBDlnmahys9/YfLJaSeqOjPpYv/PDmwHYtX17Uvdf3vhKAJ54
-0bkAVCrV9OEh3SpOZIG5LYQwPE35TcBvAU8C/udR+pgA7pqmfBPQAfw4Luib6RlzEkK4bLryGFF+
-8lz7ERGRhUGRYxFZiPbOUL4nXnvn0Me+EKbJaUrvPdozRERkEdLkWEQWopUzlK+K17ls3zbdxDh7
-79GeISIii1DLplUUijEFInPSXcDTCKrVarymaQWFgn8rmgvsJicnk7pcPFHPcn6Knj1qsV78vNFc
-3JbWhfjtbaZTZINY+cKj67yvuLgvplpkF/eNjHja5GQce3ZZ3d2b7wfgBz/8GQCrly9J6jo6OmOf
-/n2IBwHG8aTfG5EF5slm1j1NasVV8Xr7CfR9HzAGPNHMeqdJrbjqsbccn4vX9nKrDmgQETmjKHIs
-IgtRL/Cn2QIzewq+kG4QPxnvuIQQqviiu26mLMjLPENERBaplo0c12oTAATS6GgzKtyM4O7dfyCp
-m5z0KPLIiAeRdh/emdRVC96+r9gHwJKupUldOf5+USrFCHB267jQjA77GHKW/i5ief+8kU/Lcg1/
-Tj0GmAeHx5K6ffsPAbBr32C8Lw0BP/LwAwC049HllzznhUndxnPWAFALcSFeZnu4aj0bfxZZUH4E
-vNnMngb8lHSf4xzwO3PYxu1o3g88F3hXnBA39zl+HfAt4OUn2L+IiJyhFDkWkYVoC3A5cBh4C/Cf
-gduAl8zxAJBZhRAOAFcAX8R3r3gX8ETgrcAnTrR/ERE5c7Vs5LgZpG1k83zjgRttHb6F2669aXT4
-lp/7vv87d3nZ9gM7krrBqkdku83zd3vKaU7vsmXLAVixwss6u9JvaTFGjoulmO9bziT8xnzienbN
-UBzz0JBHjHfvO5RUPfjwAAA/v20zAEuWLkvq+sp+42te+nQArrr8kqQuxAh6cpBJJum4UNDvRrKw
-hBAGePQuiK84SvsbgBumKd8wh2ftAd40Q/Vj910UEZFFQbMjEREREZFIk2MRERERkahl0yqCNbdD
-SxfkNdMqym1tABw8ku71/4s7bgFgYsJPmxsaS0+crZunPkzUR/y+7elCvgfv3wLAsmW+WG/1ujTd
-oac3LuDr749t0oV87e0dPs7MmCfqfurdjr1+NsHd9z6S1N1+hy+6e2SLj3n18vQEvxdf5Qd0PePJ
-mwDoKKavuTI6FF97ya+Z34faCiVEREREJKXIsYiIiIhI1LKR40KxDKTR4qxy2RfkFctp3fiEb3U2
-UfXDP9rbu5K6rk6P8taHDwMwdijdRWrX9v0AHDzg0eQDh/Ynde1dHqHu6PD7+2MEGWDNat9ibcmy
-tGxw3KPVt99xHwB33f1QUnfwcIwU53yd0FlrVyd15298HAA9nd0ANGrp4SbFXNxOLsaoG5mDT/I5
-RY5FREREshQ5FhERERGJWjZyXIrRYbLHM9d9O7NSm5d1dfUmdbtinm89HhRy3vr1SV0xllXxk2zH
-u9KIc3fcuq0Uo8NjExNJXT0e8jw46JHm7dvT7eG2bdsOwKrVaQS4kfe+9je3cMskJK9Z4xHmsTGP
-cJfb0zGU2uM/Y3yphWJbUpfPfA6Qy0TSLa/fjURERESyNDsSEREREYk0ORYRERERiVo2rYJkC7c0
-raJQiovT6n7taO/JtPfFaV3dvpBv/dnrkqr6kKc5jOf9dLnJ8XJSV617akYt5+kLh4bSxXoWF8/1
-dvlzsosDu7p8wd/Y6FhmyN7HxrP82U98wuOTun2H9vmza56qkV0wuOfgbgCW93vZ0iWrHvN9qDd8
-QV++lFmEl2vdf34RERGR46HIsYiIiIhI1LKhw1xzC7PMgrxm5DaX85Vu+UJ7UtfVvQSAVWt94duK
-FemBHXT67xAH8UV7zQV2AO0dzQNCvM1ZZ61N6oaG/NCQcrkcr+niuPPPP9/bDI4kZfVJH193n2/J
-tumSC5K6vqUeFX5gi2/vdu+D6QEhuw7sBGDtiuUArFz9uKTOCh7tLjSD1rn0+1HT70YiIiIij6LZ
-kYiIiIhI1LKRY3I+729kz2eOn4cYTQ7FTFS55J/39Hh+cLEz3eat3OnR5D37/RCQA8MHk7rhcd+6
-bXLSc3onK43MEPzbWy51AtDZ0ZnUVSbqsS6NXm96wiUAXPCEJ3r7zKEh/Ut9XJ29KwDYuysdw6FB
-z1ve8pBHk/tXptvDLV3lh40UzXON6/X0G1IL6VhFRERERJFjEZnCzG4ys3D0lif8nA1mFszshpP9
-LBERkbnS5FhEREREJGrZtIp6Y5rAVwixzlMaGlZLquIubVQq47Ft+q3pW+apCRQeAGDvweGkrljw
-dIW+Tk+PmKxUk7pGLp7IF3d+6+vvSOoqVe9j987dSVl7h/fx+KdcBsDyVemWbNWYtlEu+aK+NSvS
-1InhvZ5iUYsnAO7Ztyetm6wAsLTL0zG6utPt6yyztZxIxm8CHUdtJUd1985BNrzvm6d7GKfVwEdf
-erqHICJyTFp2ciwixyeEsO10j0FEROR0adnJcfMAjmz8uLn8rFaPkeOQRo6LcXHe5IRHaEeH0+hw
-fqnX5eMWcNn7qnWv6yj69mulfPotHZ0YBODwoEd29x3Yl9StWbPS24yn28LdcfsvAFi2xreDW756
-RVK3Z+dWAG752Q8BGBwaTV9r0cPevUt9+7nxsfGk7q5f3ut99vnzLrnkCUldW1e6QFBam5ldDbwM
-eBKwGqgCvwQ+F0L4hyltbwKuDCFYpuwq4AfAdcC3gA8CzwCWAOeEEAbMbCA2vxT4M+BVwFLgEeB6
-4DMhhKPmMpvZ+cCbgOcB64EeYA/wHeBDIYQdU9pnx/Yv8dlXACXg58AfhRB+Ns1zCsB/xSPlF+E/
-D+8H/g74bAhasSoishi17ORYRB7lc8A9wI+A3fik9SXAjWZ2QQjhT+bYzzOAPwJ+AnwBWAZMZupL
-wP8B+oAvx6//E/Ap4ALgbXN4xquBt+AT3p/F/h8PvBl4mZk9JYSwc5r7ngL8v8D/Bf4WODs++3tm
-9sQQwv3NhmZWBP4NeCE+If5fwATwbOAzwNOA/2cOY8XMbp2hatNc7hcRkYWldSfHeV9raJnjoxsN
-DwQ1tzAbr1SSulzc+m1Jn+fkNiYnkrpaxbdK6+7yNMyOjnT7taFh7+PAYY8Aj4ym97W3e7JxreqR
-5v370+3XxsY8gJY9pMSCR6sfeNBzm9fc9ouk7uH7fwnAvXffCUDV0iOscxYPD1nqW79VJtIxDB06
-4mVDPs7OzNh7l6ZbxUnLuziE8HC2wMxKwLeB95nZ9TNMOKd6AfCWEMLfzFC/Go8UXxxCqMTnfBCP
-4P6umX0lhPCjozzjRuATzfsz431BHO8fA2+d5r6XAteEEG7I3PM7eNT6ncDvZtp+AJ8Y/xXwrhBC
-PbbPA58H3mRmXwshfOMoYxURkRaj3SpEFoGpE+NYNgn8Nf5L8nPn2NUds0yMm/4oO7ENIRwCPhy/
-vGYOY905dWIcy7+LR79fOMOtP81OjKMvADXgqc0CM8sBb8dTNd7dnBjHZ9SB9+IZWW842ljjPZdN
-9wHcN5f7RURkYWndyLGIJMzsbOAP8Unw2UD7lCZrH3PT9G45Sn0NT4WY6qZ4fdLRHmD+55Q3AFfj
-+ctLgOzWKpPT3Abwi6kFIYSqme2NfTSdD/QDDwJ/nP3rTcY4cOHRxioiIq2nZSfH9bgUL5fLpFXE
-tUDjFU872H/gSFLX0eaL2pb0elpFfTJdkLf9kc0A7N3tW6SNj6VBrcmq97l/n5+eNzyS1vV2+Sl7
-9ZqncQwOpet7xsb82W1tpaSs2vD/5o/9/G4A7t+yK6kr4mPu6/Kt3EYb6XNKbT7PGYwL8Qbufyip
-sxgTizvOsXd3+pfzZSuWIq3PzDbik9olwI+B7wKDQB3YAPwWUJ7p/in2HKX+QDYSO819vdPUTfVx
-4F14bvR3gJ34ZBV8wrx+hvuOzFBe49GT6+Yb/zx8YeFMuuYwVhERaTEtOzkWkcR78AnhNVPTDszs
-9fjkeK6OttvEMjPLTzNBbm7aPTjbzWa2AngHcDdweQhheEr9649hrDNpjuHrIYRXz0N/IiLSQlp2
-ctyMEtdrmW3Xqn5Ax959+wF45OE0MrtxvW91Vp306O2BPeluUWNH/L/P23cc8vv3pP99H4wL6w4M
-et8h8yfayYoHskolD1rVGmnkuBGfM5iJNB8Z87E+sNPTQ9vatyR161d6RPv8jfFAko62dHzxwJOt
-u/1Akfs2p5HjzrjQsNzm/9QrLT08ZGJsBFkUHhev/zxN3ZXz/KwCcDkeoc66Kl5vP8r9G/G1EN+d
-ZmK8LtafqPvwKPPTzawYQqge7YbjdfHaXm7VIRgiImcULcgTaX0D8XpVttDMXohvjzbf/tws3U7F
-zPrxHSYAvniUewfi9Zlx54hmH13A/2AefqEPIdTw7dpWA582s6n515jZajO76ESfJSIiZ56WjRyL
-SOKz+C4R/2RmXwN2ARcDLwK+CrxuHp+1G89fvtvM/hUoAq/BJ6KfPdo2biGEPWb2ZeDXgTvM7Lt4
-nvLz8X2I7wCeOA/j/DC+2O8t+N7J38dzm1fguchX4Nu93TsPzxIRkTNIy06O60laRZr6eOiwpzk8
-MuCn4+7YkZ5Y19/na28OH/LUidHhA0ndUCwbGPBFd7t3pyfQjU56qsRk8G9lR08ahCoWPWWiVPR0
-ifaOYlKXz+fjmNI9iXM1XzVXjX1WRtKUkAfHfY/kXC6mR5yVLqarNPyvwu1FT7WoTKZ/Jba6fx+G
-R7xsSX+6t/GO7ToleDEIIdxlZs8G/hu+F3ABuBM/bOMI8zs5nsRPtvsIPsFdhu97/FE8WjsX/yXe
-8zr80JD9wL8Cf8r0qSHHLO5i8Urgjfgiv1/DF+DtB7YAfwJ8aT6eJSIiZ5aWnRyLSCoen/ycGapt
-Sturprn/pqntZnnWID6pnfU0vBDCwHR9hhDG8KjtB6a57ZjHFkLYMEN5wA8cuXG2cYqIyOLSspPj
-0PD/Vja3WgPYsnUvkC6s61+Zbn1ajFHd3Qc9uhzG04jzSNX72nPQI7qHB9OFdaU2T9vu6/ZvZXdX
-msa9pLsbgJ5uP1mvXE53y6rXvf8VS9IFeYMVL9t/2KO823emO1NVGt7vePBrdTCNbIcYHR6yTm87
-mUao6zFtMx8XA5aKaV1tYgwRERERSWlBnoiIiIhI1LKR4xiY5eDBNPq6Y7tvdbZpkx981dWd/iX2
-yGE/o2D/hEdhJ4aHkrrBQ/75eMUjum0d6cEdq1Z5dHjpMs9Z7uxM67raPGrb0e55yNmTuJqR487J
-tH1n1fOPezq9r4KlUd7xGPldtcpzjUvV9HXVY92hvb5F3eGD6Q5YubiV25rlPs5cZgwhpBFwERER
-EWnhybGInFoz5faKiIicSZRWISIiIiIStWzkeHTcUxS2bd2ZlJ270Q/Xet5znw3APXfdnNTteuQB
-AIbi1m+jo+npcXt2+ol43T2+sO6cDel2aCtX++dt7f6tLOTTBYDNz/N5/x0kZ+nvIo2Y0lCcTMdc
-nPT6zpi20dXVk9QNjfnCvaERX0SXy6dbxnV3+UK/Utk7a9TSrdyaz165ehkAtUa60NBy+t1IRERE
-JEuzIxERERGRqGUjxwcPe7S3s6s3KXvOlc8CINQ8qpyvp1HU3rgIbsuAR5qLpcxCudjH+hglXrk8
-3QKu3O7tzLyvXHLgLcRzPsjHCG2+8Nhvd7mWLrrrjNvO1eM2dL2NtH3niLfbtX0XAFsPpSHnSy7y
-iPhTnnQxANXxQ0nd8LAvzrO8L8gz0qhynTTKLSIiIiKKHIuIiIiIJFo2cnwgbuF2zrpzk7LuTj8k
-447bbgPSfFyA5Us9J7dei7nAmchx/mxv19yara2cftuax0BDPt6Xho4L8cCNcpsf65w9BIQYtW1k
-dlOzeMBHMx+5Vksru4c92r1/r7+ukeHdSd3FF28C4NnPvgKAhx/8ZVI3MLAVgGrDxxJqmYPElHMs
-IiIi8iiaHYmIiIiIRJoci4iIiIhELZtWMTjsW7Flt3LrKHgqQ606DkBvX7pYb2zCy87tWAdAqZCm
-H1QrcQFf3svyufTb1kydIHhdsZQusCt1eBpHV7cv9iuV0rSK5gl5IbMmrhF/Vwn4YruQ2XatuzfE
-5/nCurWrVyZ1fd0+ngMHD/oY2tPXtepsX6x35IgvUJwYyZ6Kl0mxEBERERFFjkVkYTGzATMbON3j
-EBGRxallI8fNqOiPfvTTpGTksEdRL3+GL2ArZBbIFdr887YYFV7W05bUjQ171LUy6VHXQjFzX8EX
-7sU1dI9ayFfu6IllfmBHLrPPWwgxKpw5GKRZ34iL+yzUHvOclfi4ejrSqO9k1fs6dMi3cOtesiyp
-6+/wKHJbhx9gMj7SkdSNDI8iIiIiIilFjkVEREREopaNHFfjcct79hxIymoXnw9AsasvlqQ5vYWY
-D5zLeW5vrq0rqetqRn7jgRq1anqQRiM0D/+I0d7MISDNz61Zl62MOcrZnONcLKORj2NJ/3ly8QCR
-fLf/PmN0JnXlGLXu6PBxljKHjVjOc6Cta6nXldP7iu2KHIucTHfvHGTD+755uofBwEdferqHICJy
-xlDkWEROOXO/Z2b3mNmEme00s78ys95Z7nm9mf3AzI7Eezab2R+bWXmG9pvM7AYz225mk2a218z+
-l5ldME3bG8wsmNlGM3u7md1lZuNmdtM8vmwRETkDtGzkWEQWtE8C7wB2A58HqsArgKcBJWAy29jM
-vgBcA+wA/hk4Ajwd+DDwXDN7fghpkr6ZvQj430AR+DfgIWAd8GrgpWb27BDCbdOM61PArwLfBL5F
-9s9LIiKyKLTs5HjpEk+dyKYyHB707d3q8SS6UjENnDcX0jW3T6tnvjWFmKbQ1uH5C5WJsaSuVvP/
-HgfzugbpVmnNk+6ap+El274BlmuekJfmVeRijkWIgbBipn3zND+LmReFtIrR0Yk4lvjf8Xo6hlLJ
-xx7iaXiZKto7WvafXxYwM7scnxg/DDw1hHAoln8A+AGwGtiaaX81PjH+OvCGEMJ4pu5a4IPA2/CJ
-LWa2BPhHYAx4Vgjh3kz7i4Gbgb8FnjzN8J4MPCmEsOUYXs+tM1RtmmsfIiKycCitQkROtWvi9c+a
-E2OAEMIE8EfTtH8nUAPelJ0YRx8GDgJvyJT9JtAHfDA7MY7PuBv4H8CTzOyiaZ71349lYiwiIq2n
-ZUOHZ5/th3mcvX5NUrb/wH4AxsY88tvW153UlUq+RVqo+WI7y2yxFmIEOB/Dte0d6WK9yUn/62/z
-UI9cPg3phuT+zKq7qBkVzj4nBp+xGB4uFNKodyE+O5drHjaSbhlXKnrkeHzcFyFaLt3mrdjsI/g1
-NNLQcd30u5GcFs2I7Q+nqfsJmVQGM+sALgUOAO9q/n9jigpwYebrZ8TrpTGyPNX58XohcO+Uultm
-G/h0QgiXTVceI8rTRadFRGQBa9nJsYgsWM1Fd3unVoQQamZ2IFO0BN+0fDmePjEXS+P1t4/Srmua
-sj1zfIaIiLSolp0cd3R63u4znnFpUnbwkP83txnlrdXSKGo5Ro4LbX7NZ6Kvoe7R5EKxWZZGgi0f
-c3pjUT6ff0xdLub7ZiPIzRzifCbSnI//HIVmH5koWSH21SzK5zL35cqxjUeOJycrSV29Xov3+fMK
-mRzsXGasIqfQYLyuBB7JVphZAViGL7zLtr09hDDXKGzznktDCHcd49ge+2ceERFZVPR3dRE51Zq7
-RFw5Td0zgeS3thDCCHAP8Hgz659j/zfH668e9whFRGTRatnIsYgsWDcAbwY+YGbfyOxW0Qb8+TTt
-Pw78HfAFM7s6hHAkWxl3pzgnszXbF4EPAB80s5+HEG6Z0j6H72Jx0zy+pmldvLaXW3UAh4jIGaVl
-J8cTFV/Uvnrt8qRs9RoPPJXiaXjZtAqLp9NZzoNW9VqyZWq63VrMachlUy4spjvEMsumKsT29bh/
-Ws7SLVMnq95/rpr+FbdcaJ6k13xOGthP1tHFutDIZ+pi//FEvUZjIqkbGvK/MDfi68uWaNstAAAg
-AElEQVTn0oV8hJb955cFLITwUzP7DPB24G4z+xrpPseH8b2Ps+2/YGaXAb8LPGxm3wG2Af3AOcCz
-8AnxW2L7g2b2Gnzrt5vN7Ht49DkAZ+EL9pYCbSf7tYqIyJlHsyMROR3eCTyA70/8O/h2bF8H3g/c
-ObVxCOFtZvZtfAL8PHyrtkP4JPkvgH+Y0v57ZvYE4PeBF+IpFpPALuD7+EEiJ9uGzZs3c9ll025m
-ISIiR7F582aADaf6uTbdNmMiInJizKyC508/ZrIvskA0D6q577SOQmRmlwL1EEL5VD5UkWMRkZPj
-bph5H2SR0615uqPeo7JQzXIC6Uml3SpERERERCJNjkVEREREIk2ORUREREQiTY5FRERERCJNjkVE
-REREIm3lJiIiIiISKXIsIiIiIhJpciwiIiIiEmlyLCIiIiISaXIsIiIiIhJpciwiIiIiEmlyLCIi
-IiISaXIsIiIiIhJpciwiIiIiEmlyLCIyB2a2zsy+YGa7zKxiZgNm9kkzW3KM/fTH+wZiP7tiv+tO
-1thlcZiP96iZ3WRmYZaPtpP5GqR1mdlrzOwzZvZjMxuK76d/OM6+5uXn8UwK89GJiEgrM7NzgZ8B
-K4BvAPcBTwXeCbzIzK4IIRycQz9LYz/nA98HvgxsAq4BXmpmzwghPHJyXoW0svl6j2ZcN0N57YQG
-KovZHwOXAiPADvxn3zE7Ce/1x9DkWETk6D6L/yB+RwjhM81CM/s48G7gz4C3zKGfj+AT44+HEN6b
-6ecdwKfic140j+OWxWO+3qMAhBCune8ByqL3bnxS/BBwJfCD4+xnXt/r07EQwoncLyLS0mKU4iFg
-ADg3hNDI1HUDuwEDVoQQRmfppwvYBzSA1SGE4UxdDngEWB+foeixzNl8vUdj+5uAK0MIdtIGLIue
-mV2FT46/FEJ44zHcN2/v9dko51hEZHbPjtfvZn8QA8QJ7k+BDuDpR+nn6UA78NPsxDj20wC+M+V5
-InM1X+/RhJm9zszeZ2bvMbMXm1l5/oYrctzm/b0+HU2ORURmd0G8PjBD/YPxev4p6kdkqpPx3voy
-8OfAXwLfAraZ2WuOb3gi8+aU/BzV5FhEZHa98To4Q32zvO8U9SMy1Xy+t74BvAxYh/+lYxM+Se4D
-vmJmyomX0+mU/BzVgjwREREBIITwiSlF9wPvN7NdwGfwifK/n/KBiZxCihyLiMyuGYnonaG+WX7k
-FPUjMtWpeG/9Lb6N2xPjwieR0+GU/BzV5FhEZHb3x+tMOWznxetMOXDz3Y/IVCf9vRVCmACaC0k7
-j7cfkRN0Sn6OanIsIjK75l6cL4hbriViBO0KYAy4+Sj93AyMA1dMjbzFfl8w5XkiczVf79EZmdkF
-wBJ8gnzgePsROUEn/b0OmhyLiMwqhPAw8F1gA/C2KdXX4VG0G7N7aprZJjN71OlPIYQR4MbY/top
-/fxe7P872uNYjtV8vUfN7Bwz65/av5ktB74Yv/xyCEGn5MlJZWbF+B49N1t+PO/143q+DgEREZnd
-NMeVbgaehu+5+QBwefa4UjMLAFMPUpjm+OhbgAuBV+AHhFwef/iLHJP5eI+a2dXA9cBP8ENpDgFn
-Ay/Bczl/ATw/hKC8eDlmZvZK4JXxy1XAC/H32Y9j2YEQwu/HthuALcDWEMKGKf0c03v9uMaqybGI
-yNGZ2VnAh/DjnZfiJzF9HbguhHB4SttpJ8exrh/4IP4fidXAQeDbwJ+GEHaczNcgre1E36Nmdgnw
-XuAyYA3Qg6dR3AN8FfibEMLkyX8l0orM7Fr8Z99MkonwbJPjWD/n9/pxjVWTYxERERERp5xjERER
-EZFIk2MRERERkUiTYxERERGRSMdHL1Bx1fAG4F9CCHec3tGIiIiILA6aHC9cVwNXAgOAJsciIiIi
-p4DSKkREREREIk2ORUREREQiTY6Pg5ldaGbXm9kDZjZmZkfM7Jdm9mkzuyzTrmxmrzWzvzezO83s
-gJlNmNlWM/tStm3mnqvj5uxXxqIvmlnIfAycopcpIiIisujoEJBjZGZvBz4B5GPRKFAF+uLXPwwh
-XBXb/hrwb7E8AEeAdqAtltWAN4UQbsz0/zrgU0A/UASGgPHMELaHEH5lfl+ViIiIiIAix8fEzF4L
-fBqfGH8NuCiE0BVCWIIfX/hG4NbMLSOx/bOArhBCfwihHVgPfBJfEPl5Mzu7eUMI4SshhFX4ueEA
-7wwhrMp8aGIsIiIicpIocjxHZlbEz/leC/xjCOE35qHPvwPeBFwbQrhuSt1NeGrFNSGEG070WSIi
-IiJydIocz91z8YlxHfiDeeqzmXJxxTz1JyIiIiInQPscz93T4/XOEMLOud5kZv3A24AXAxcAvaT5
-yk1r5mWEIiIiInJCNDmeu5Xxum2uN5jZRcD3M/cCDOML7AJQApYAnfM0RhERERE5AUqrOLm+iE+M
-bwNeBHSHEHpCCCvjorvXxnZ2ugYoIiIiIilFjudub7yun0vjuAPFU/Ec5ZfPkIqxcpoyERERETlN
-FDmeu5vj9QlmtnYO7dfF6/5ZcpSfN8v9jXhVVFlERETkFNHkeO6+B+zEF9P9xRzaD8brSjNbMbXS
-zC4BZtsObihe+2ZpIyIiIiLzSJPjOQohVIH3xi9fb2ZfNbNNzXoz6zez3zazT8eizcAOPPL7FTN7
-XGxXNLNXA/+BHxIyk3vi9dVm1jufr0VEREREpqdDQI6Rmb0Hjxw3f7EYwY+Bnu746FfhJ+k12w4D
-ZXyXim3AB4Abga0hhA1TnrMJuDO2rQH78GOqd4QQnnkSXpqIiIjIoqfI8TEKIXwceBK+E8UAUMS3
-ZbsL+BTw7kzbrwPPwaPEw7HtVuBjsY8dszznPuD5wL/jKRqr8MWA62a6R0REREROjCLHIiIiIiKR
-IsciIiIiIpEmxyIiIiIikSbHIiIiIiKRJsciIiIiIpEmxyIiIiIikSbHIiIiIiKRJsciIiIiIpEm
-xyIiIiIikSbHIiIiIiKRJsciIiIiIlHhdA9ARKQVmdkWoAcYOM1DERE5U20AhkII55zKh7bs5Pg3
-X/WiAFAsFpOyx513HgAbz/HvcbloSV2oVQA4eGgQgG3b9yZ11bq3a9C81pO6fNGD70baV1O97u3q
-Da/bvm17Ume1CQAuu+TCpKxk3r6t5F+3FWtJXTmXB6CY89czGdLnDE6MATA8dMRfSzW9L1co+2to
-+DhrtfSPBbXYx4f+5h8fO3gROVE97e3t/RdeeGH/6R6IiMiZaPPmzYyPj5/y57bs5LhQ9JdWKqWT
-466uTgDyBZ9oFgrpRLHw/7d351GWl/Wdx9/fe2/dqltLV2/0Dt2ssgqCAmIUjANRiYiCcTSeI8wh
-45LENTNDyJgBE41nJmNM1EgyTqIyGnFDJiMMTBSUJR4TUNmaxW4a6AWa3qq61rs988fz/S1dfau7
-uqnurrr1eZ3T5976Pb/f83t+3fdUP/Wt7/N9SnF+uGxpFwC13CTy+a07AKg34myykOuzVqvGY4V4
-fUe5nLaFEM+v++T42OOPT9t274x9Pr99Z3qs0hHH1VeJY1/Sn/XV1dUdX4vx3j25hJhk7MVmnBQP
-Dw+nbebnWzP2XSxmF3ZYERE5ZDaccsopCx944IEjPQ4RkVnpnHPO4cEHH9xwuO+rnGMRmfPM7G4z
-C/s/U0RE2l3bRo5FRI60RzYNsObaHxzpYYjIDLDhM5ce6SHIFLXt5LhYjKkGhWKWTlsux8etdMc8
-3K5cWkXw9IjOrphWsWxZlnIwOh5zgUfG4jlNspzeZrPh94vnm2X3GxkZ8fM9X7ijK23r6o4pHs3a
-eHqs5oH84Vr8euvOkex5mnHs3fNjHx35jAhP82h0x7bxajUbn+dCF7zvTk/PAGgqrUJERERkD0qr
-EJFZxczONbObzWyTmY2b2RYzu9PMfit3zlVm9l0zW29mo2Y2aGb3mdl7JvS1xtMpLvSvQ+7P3Yf3
-yUREZCZo28hxT0+Moppl8/+uLl/M5hHWcjGLnDYKSaQ5ntNVydIPV65YCcCQr5jcuDmrOrFrV6wQ
-Ua/HaPL4eBYJHhgY8DHE+/TP60/buitdPpbKXscIMRo9PJ4trHtxML7v9uobSxZkEeAuX2TXHeL1
-lbEscjxW9coa/vfQ2dmZtilyLLONmf0O8CWgAfxv4ClgCfBK4IPAt/zULwGPAj8BtgCLgDcDN5nZ
-y0IIn/DzdgE3AFcBq/19YsMUxzTZiruTp3K9iIjMLG07ORaR9mJmpwJ/DQwCrw0hPDqhfVXuy9ND
-COsmtJeB24FrzezGEMKmEMIu4HozuwhYHUK4/lA+g4iIzHxtOzmuVGKEtNFspseSxeiBeKxQzD2+
-R5EbXn6tVqulTd09MUqb1AV+8cUX07Ynnngi9tniuqTOsVdaY2h7Vju5t68PgPn989NjCxfGcqgl
-j+42C1nJuBHvf9Aj00eVerOhJ1FhK/t4e9K28dpuf/bCHuOMz6+sGplVPkD8nvUnEyfGACGEjbn3
-61q0V83si8CvA28AvjYdgwohnNPquEeUz56Oe4iIyOHTtpNjEWk75/vr7fs70cyOAf4TcRJ8DFCZ
-cMrK6R2aiIi0C02ORWS2SH7NsmlfJ5nZccDPgAXAPcCdwAAxT3kN8F6gc7LrRURkbmvbyXHZd6rL
-L5CrVuP7EDzVIpdi0GjEY0Nefq1ez9IxOrti0GnLls0ArH96fdo2Pj7m58cUimYujSPZurqjEO9T
-ClnKRXV4EIBtY9m2iLsH4m55XX3zAOhfvjxt66rE5yl4qblSZ7Z7Hr4zXkfBF+ZVspJxQ8NxfE2/
-db7UXMG0a7TMKrv8dSXw+D7O+xhxAd7VIYSv5BvM7F3EybGIiEhLbTs5FpG281NiVYo3se/J8Qn+
-+t0WbRdOck0DwMyKIXi5mGlw+sp+HlDhfxGRWaVtJ8dlL+FspSzC2uMbYJQ8wmq5Ms/lUowOV8eG
-gD2CyuwejBHdtWsfBmDQvwaoN2LUNjTjBVbIorGNRgzXjteTBYDZ/TqS97no7ehYjPKOVb3PkEWh
-561YAkB3ZTEAtUY2wFKIiwk7fdCN3OYm5c7Y/6hvclIkK99WaLbtP7+0py8B7wc+YWZ3hBAeyzea
-2SpflLfBD10E/GOu/TeAaybpe7u/HgM8PY1jFhGRWUazIxGZFUIIj5nZB4EbgZ+b2a3EOseLgFcR
-S7y9nlju7Wrg22b2HWAzcDrwRmId5He26P6HwDuA75nZbcAo8EwI4aZD+1QiIjLTaHIsIrNGCOF/
-mNkjwB8QI8OXA9uAh4Av+zkPmdnrgT8FLiV+n/sl8HZi3nKryfGXiZuA/FvgP/o1PwY0ORYRmWPa
-dnLcEWJqQSGXYtBTiWkVnWWvI1zLUhNqVU99KMS/kvHhobTt4cdiSdUtW2IZ1Y6OLDUhqZlc8xVv
-9dre6YrB0zeK+d26PS2iWM76Knkt4mRR39jgrrRtG7H/waMWALBk3rK0zQoxdaToqRNdhew+Fd8V
-cGg0Xl8dyxYolkraIU9mnxDCPwNX7Oec+4n1jFvZayWq5xlf539ERGQO0y4QIiIiIiKubSPHSUSX
-kCtd5hHVjo4YaR3xMmwAY17yzfycLS88n7at3xDX5yQ7z1luYV2x4JFYX5DXqNXTtmSHvKTPam58
-TR9WsSP7Jyh3JqVXY2Oy2A9gcGgYgEfXxh35GtWsBNyao1cAMM9Lx1luNWGPl6EbKHnkOBfZ7iiq
-lJuIiIhIniLHIiIiIiKubSPHyYYfHZVs11jznN7xsdoeX0OW57vON/h4+pln0rYx72tef9ygq5iL
-HAff/MM648YbhVwJuNHRGN1t+gYjtZCLKnt0t1DM8n6LHvkteqS5kcuJTiK+L2zbAcCuXVk5uZGx
-GJM++5QTY5+5n3lKFv+Ju7zv8dEsclxvZpuSiIiIiIgixyIiIiIiKU2ORURERERc26ZVND2FocPT
-CQDK5WTB254l0wAefXwtAI+sjZtulcrZdUkKxLYd2wBYPH9h2tY/rx+AkdGReF0uTcJ897vRMU+v
-aGZpEk1frDdezZbplXyBYFeSopFL+6jV4/P4ZQyPZikav3jsqTiu/jiW41YdlfVp8YJKOS5CHLTh
-tG20OoKIiIiIZBQ5FhERERFxbRs57uiI8/5yrlRasZC8j9HdLc9vSdseeuRhIIsSd/V2p21N4rGN
-mzcDUGpmJdCWL10KQKUrRqV3796dtiWR32Ip3nc0Vzpu3EvH1XLl2kb8WPAx9KSl3cCKvjmJR5qT
-RYUAu4a2AvAvv3gojmnhr6VtZd9kpKvki/06sp+HxutZ5FxEREREFDkWEREREUm1beQ4Kbc2b968
-9FjZ826DB0w3PPNs2jbiZdf65nsO8VgW5W14bnJS+m1gV7at80LPOV66LG7nXCzktpb2Em7mW1h3
-VLJI8NBQ3J56bGzvaHK9FqPCnaUs77nbN/MYHo3njOWivtVqzCt+cn0sP7ftrNPStqNXLIn39uh1
-uTPrc1Sl3ERERET2oMixiIiIiIjT5FhERERExLVtWkWpFFMoKt3ZDnkFT7UYGh4EYNdAlh7Rv2Ax
-kKVQjI5mZc5KhZgOMa837pDXmSvXNlaNqQl9nl7R2ZXdb3B3TJ1I6q91V7rStkop9rntxW3psd0j
-scxazdf7NedlqROljnjPDl+YV8ilbzSLsf8XfTHgCwNZubbVx8T7lGtx4V9vOfsnH60qrUJmHzPb
-ABBCWHNkRyIiIu1IkWMREREREde2kePeeQviG8sirOvWrwfg6WeeA+DZ555L20bGvKSab9yR3yDE
-mrGPcjFGo4ulrM+CR3IrPb0ALF6SlYBbvyEukAtJ2bZqVrattxyjyPN7swWDQ8MxWl3wRXNLli9J
-2zq8fFzwhXhHLVuaPdemTQA8P7Ad2DNy3PSydaVC/DmoxxclAgwWssWAIiIiItLGk2MRkSPtkU0D
-rLn2B0d6GDPKhs9ceqSHICKyT0qrEJEZx6LfM7NHzWzMzDaZ2RfMrH+S8zvN7Foze9jMRsxs0Mzu
-MbPf2kf/Hzazxyb2b2YbkrxmERGZe9o2ctzZ1QNAtdZIj+0ajAvkCl7zd/7CRWnbpkefALK6w5VK
-biGfpyTUfFFbZ27XvZ7emE7R66+LFy/OxuA73I3tiGkVzZClavR1x/SL3vlZWkVh54sArDh6JQBn
-nXVW2rbRaxgvXxbbVh9/fNq2+dZb4n08fWPX7sG0reH3TBbwdXRkdY7LnVmKhcgM8zngQ8AW4G+B
-GvBW4DygDFSTE82sDNwBXAg8DnwR6AauBG42s7NCCNdN6P+LwAeAzd5/FbgMOBfo8PuJiMgc1LaT
-YxGZnczsAuLEeB1wbghhhx//I+AuYDnwTO6SjxMnxrcDl4UQ6n7+DcDPgD80s/8TQrjfj7+WODF+
-EjgvhLDLj18H/BOwYkL/+xvvA5M0nTzVPkREZOZo28nx0HCMEteTcmpAsSNGclesWOlf58quDcbF
-cE899RQAIYS9+uz2aO+pp7wsPbZqVewriRj392e/9S15hHrAI7mdlSxSW/TSbI167j7FuOju6NWr
-ADjppJPSpiXzFwLQ290HwFg9i4gn0e4kSpwfuXn5uiRoXcgtJsxHkUVmkKv99VPJxBgghDBmZn9I
-nCDn/Tvix/5jycTYz99qZn8CfBm4Brjfm96b639X7vyq93/vtD6NiIjMKm07ORaRWetsf/1xi7Z7
-gfQnQzPrA04ANoUQHm9x/o/89RW5Y8n7VpPgnwL1FscnFUI4p9Vxjyif3apNRERmrradHNfHYiS4
-mVtz2GzE//O2+wYfT6z9Vdq2eyjm6y5YsGCvvpII67x5MWr7yle9KrtPLaY+1uux792+EQdA0TcL
-6SzH60u5jTuOWrzIr89SGzdsfBaA4aEY7d764ta0bemCeH5fT4xMP/6rbOzDI/F5isk452fR64KP
-oVmPUek9IsedihzLjJR8gF+Y2BBCqJvZthbnbpmkr+T4/Cn23zCz7QcwVhERaTOqViEiM82Avy6d
-2GBmJWBxi3OXTdLX8gnnASQrVlv1XwQWTTwuIiJzhybHIjLTPOivF7Zo+zUg/fVHCGE3ceHeSjM7
-scX5r5/QJ8DPc31NdD5t/Bs1ERHZv7b9T6C/Eh8t5HbIa/r70fGYCnHsMSvTtkefirvlJeXX8gvr
-Fi6Ki+FWLItBqIW51Ivt2+NveMe9jNrmzZvTtiRF47STTwGgt6crbXvteRf4oHI78cXMB7YNxDVI
-Dz/8cNq2pTf+VvjYNccBsHNXuo4o1eEl5oq5hXbmaRV4OTrL/TikUm4yQ32FuIDuj8zs1ly1ii7g
-z1qc/3fAp4D/ZmZXhBAafv5i4BO5cxJfIy7iS/of8PPLwKen80FOX9nPA9r0QkRkVmnbybGIzE4h
-hPvM7PPA7wOPmNl3yOoc72Tv/OI/B97k7b80s9uIdY7fASwB/msI4d5c/z82s78F/j3wqJl91/t/
-CzH9YjPQRERE5qS2nRwv6o0R4EYuc6QRYmh2YW+M4AZG0rbdXm4tWUS3YsXytG3B/BgBHh4ZBmDd
-unVp25o1q4GsbFtS7g1g/vwY7V0xGlMblx+VpTIevWQJAJYb8+vOPx+AzdviQrxSLgL88AO/AGDH
-9p1x7KXsny65d8PLzz23aWPaNjx6BgA95XhOPfd/vkq5yQz2YWId4t8F3gdsB24BrgN+mT/RS7Bd
-DHwMeDdxUl338z4SQviHFv1/gLhhyPuA90/ofyMxVUNEROagtp0ci8jsFWKh8S/4n4nWtDh/jJgS
-MaW0iBBCE/gL/5PyvOVeYO2BjVhERNpF206O+7zsWsjFZhu+O0bwCPLqSm/advGF5wHw3KaYM/zi
-1ix3uN6IOcqdXXHTkHVP70zbBkZi2bVTPK945dHHpG3lcoxeb9seK0bVq2Np27adcfF8lhENfZW4
-5fXpJ8RNRrq6shzlvmJ8/+KOmOM8MJZFvZcuj4v3B3bHXOWnn30ubVu3cRMALz/5BAAK9fG0rdS2
-//oi+2Zmy4CtPklOjnUTt62GGEUWEZE5SNMjEZmLPgK8y8zuJuYwLwPeAKwibkP97SM3NBEROZI0
-ORaRuej/AWcClwALiTnKTwJ/BXwutNo/XkRE5oS2nRyXu+cBYIUsrcK8nFmzEX+T2t+RlTJbvDCW
-bjvpuLgQb+26Z9O2R9Y+BUBXbzznuJNOSNt2enrEt2/5PgA9nhoB8G9+/Q2xz1NjmsSIp2AA7N4W
-N+GqjmTpEeYpIONDo7FtYDRtW9QXF/d1ezm4Tduzzb1eftpJAPRWYhrHxvUb0rZ1z8a0ijNOPxWA
-cq6Um9Wz3flE5pIQwg+BHx7pcYiIyMyjTUBERERERFz7Ro4rMcJaKGRL3kql+D75hWkx96NB0QPM
-fb1x0d0i3/gDYEF/jELf8cO7ABgayiLAr371a+P5C+KiuPvuuT9tu/lb3wPg6muuBuCEE49N2wq+
-DKjmm44A4JHcsaFYMq42ki2eGxn1Y814rLuYlWE7ftmq2P+KWFburvFcRLje2ON+1sh+WxzqdURE
-REQko8ixiIiIiIjT5FhERERExLVtWkVnmlaRzf+TneTM4rFCyNIKkoVq5ukKXfUs/eD8V5wGwOIF
-Mb3iG9+9PW37/vdi6sRll70NgN+55n1p2x13xvU+X/3KTQBcfPFFadsrznx5vG9ff3os1GM95Q6v
-j1zvrqZtlWqsyTwytDuek/+5JjR87PHLM044Pm3qrcRFh8O74sLBZi2rtTxey9I2RERERESRYxER
-ERGRVNtGjjvKMWKajxwXizG0WvDXUsgW63UQo694VLlYzErAlX0R25mnnghAT9+itO3vb/omAF+/
-6asAXPGOd6dtV1x5JQA/uO0fAfjGN/4hbVswL0aMX37GaemxcV90V/Sxh0q6eRf1sRjl7fTyc5Xc
-9nbVkXhdtRYXCp6welXaZsSxjw7HtlLux6HRkaxUnIiIiIgociwiIiIikmrbyLF52bYkvxgAjyIn
-m4Hko8pGzDUuJJFjsshxqRSjr/VmfD3x+JVp2+9/MJZp+9o3vgPAt26+KW0b8kjwb/7mpX5dVsqt
-oyPmFZdypdzqzZgDbb5JSakzN75Kd+wzGVY2PCo9sW1sOB5s1LOIeN3LtTVabPjR1d2z1zERERGR
-uUyRYxERERERp8mxiMwYZrbGzIKZfWWK51/l5181jWO4yPu8frr6FBGR2aNt0yqSRXdmWf5BkkZh
-ydZ4hdzjJ+kXfn7+Ogue5tCMr4GsxNryZXFh3bvf9XYAmrlUjdvviAvxhodjesWbLnlzdt2Kpd55
-lgJhvtiuGcb9Pllf3T0xBWKsGkuxjdSyxXTFzli2rrsUz6mOZOMr1j3VIsRnrdWy8nWmH41ERERE
-9qDpkYjMZrcAp/jrjPPIpgHWXPuDIz0MERE5AG0bOabgEdl8BLgQ3xf8Nd/WTM/fqwnzkm/By6IV
-C1ljCPHYqpVHAfDb73pb2lb2nUXu/ck/AbBrx4607fK3Xw7AqadnpdxKpRg5rtViWblmtg8JRV+4
-V6pU4phGcwv5GnGxXY9Hl0NjOBtfwRf5eVW4Zu7noZB/SJFZKIQwAAwc6XGIiEj7UORYRGYkMzvZ
-zL5vZjvMbNjM7jWzSyac0zLn2Mw2+J95ZvZZf1/L5xGb2VIz+59m9oKZjZrZL8zsvYfn6UREZKZq
-28hxSPKJQ7aRRvKu6NFeClmbFfyYR1OTiHA8Lwkn7/2zRJIxnOQlH7ticdr2nitijnFvJUZ577r3
-X9K28m3x9djjVqfHenrj9tRJXnASEQZo+hg6PL+4WMoix03fvyRJd+7oqKRtIcQ+Gg2PRmePnP2F
-iMw8xwL/DDwM/A2wHHgncLuZvTuEcPMU+igDPwIWAncCg8DTAGa2GLgfOA641/8sB270c0VEZI5q
-28mxiMxqrwP+PITwH5IDZvYF4oT5RjO7PYQwuJ8+lgOPAReGEIYntH2aODH+XHt/4iMAAAfPSURB
-VAjhoy3uMWVm9sAkTScfSD8iIjIzKK1CRGaiAeCT+QMhhH8Fvg7MB97W6qIWPj5xYmxmHcBvA7uB
-6ye5h4iIzFFtGzlueFqE5fIIzDMlGi2vSHbN2zutItlRj6TPfPk17zRJqwjNrFTaymVxkd7b3xp3
-yEtKrgE8+tiTAGzbtjU91tc/34eS7HSXjX28Or7HWAq5MRR8MWHTUyiskGsrxvE1msnYc7vuFbQg
-T2asB0MIu1scvxt4L/AK4Kv76WMMeKjF8ZOBbuAeX9A32T2mJIRwTqvjHlE+e6r9iIjIzKDIsYjM
-RC9Mcvx5f+2fQh9bwx6LB1LJtfu7h4iIzEFtGzmuVuNGGMX8wUIS5Y1fWim3QYhHWFv9Vzoxvpqv
-gBbSdXxeJo58W2xcsngBAG+99I1pW/+8+P9zrZrbzMM3Jyn6BibJK0DdF9SlCwDzJer8fcNX5lmL
-8nXpQ+QGGBQ4lplr6STHl/nrVMq3tZoY56/d3z1ERGQOUuRYRGais82sr8Xxi/z15y+h78eBEeAs
-M2sVgb6oxbGDcvrKfjZ85tLp6k5ERA4DTY5FZCbqB/44f8DMXklcSDfAS9gRL8T6hl8H+piwIC93
-DxERmaPaNq1iaGgIgM5S9oglT6uoJ/WAS9nSvFIjthV8wVs+daJQ2CM5gz03lksW8PmCvD1+keuL
-4YiL9Pp7ymnL6y44N46he356rFqLi+4aaV9ZZ6Mjo/4MBT+3mrbVPIWE5lg8J2T1kev1+Iy1Rt2v
-y9qq1ey9yAzzE+AaMzsPuI+sznEBeN8Uyrjtz3XAG4CP+IQ4qXP8TuA24LKX2L+IiMxSbTs5FpFZ
-7Wng/cBn/LUTeBD4ZAjhjpfaeQhhm5m9hljv+C3AK4EngA8AG5ieyfGatWvXcs45LYtZiIjIfqxd
-uxZgzeG+r7VezC0iIi+FmY0T19D+8kiPRWQSyUY1jx/RUYhM7kygEULo3O+Z00iRYxGRQ+MRmLwO
-ssiRluzuqM+ozFT72IH0kNKCPBERERERp8mxiIiIiIjT5FhERERExGlyLCIiIiLiNDkWEREREXEq
-5SYiIiIi4hQ5FhERERFxmhyLiIiIiDhNjkVEREREnCbHIiIiIiJOk2MREREREafJsYiIiIiI0+RY
-RERERMRpciwiMgVmtsrM/s7MNpvZuJltMLPPmdmCA+xnoV+3wfvZ7P2uOlRjl7lhOj6jZna3mYV9
-/Ok6lM8g7cvMrjSzz5vZPWY26J+n/3WQfU3L9+PJlKajExGRdmZmxwP3A0uAW4HHgXOBDwNvNLPX
-hBC2T6GfRd7PScCPgG8CJwNXA5ea2atDCOsPzVNIO5uuz2jODZMcr7+kgcpc9p+BM4EhYCPxe98B
-OwSf9b1ociwisn9/TfxG/KEQwueTg2b2WeCjwKeA90+hn08TJ8afDSF8PNfPh4C/9Pu8cRrHLXPH
-dH1GAQghXD/dA5Q576PESfGvgAuBuw6yn2n9rLei7aNFRPbBoxS/AjYAx4cQmrm2PmALYMCSEMLw
-PvrpBbYCTWB5CGF3rq0ArAdW+z0UPZYpm67PqJ9/N3BhCMEO2YBlzjOzi4iT46+HEN5zANdN22d9
-X5RzLCKyb6/31zvz34gBfIJ7H9ANnL+ffs4HKsB9+Ymx99ME7phwP5Gpmq7PaMrM3mlm15rZx8zs
-TWbWOX3DFTlo0/5Zb0WTYxGRfXuZvz45SftT/nrSYepHZKJD8dn6JvBnwH8HbgOeNbMrD254ItPm
-sHwf1eRYRGTf+v11YJL25Pj8w9SPyETT+dm6FXgLsIr4m46TiZPk+cDNZqaceDmSDsv3US3IExER
-EQBCCH8x4dATwHVmthn4PHGi/H8P+8BEDiNFjkVE9i2JRPRP0p4c33WY+hGZ6HB8tr5MLON2li98
-EjkSDsv3UU2ORUT27Ql/nSyH7UR/nSwHbrr7EZnokH+2QghjQLKQtOdg+xF5iQ7L91FNjkVE9i2p
-xXmJl1xLeQTtNcAI8NP99PNTYBR4zcTIm/d7yYT7iUzVdH1GJ2VmLwMWECfI2w62H5GX6JB/1kGT
-YxGRfQohrAPuBNYAvzuh+QZiFO2mfE1NMzvZzPbY/SmEMATc5OdfP6Gf3/P+71CNYzlQ0/UZNbNj
-zWzhxP7N7Cjg7/3Lb4YQtEueHFJm1uGf0ePzxw/ms35Q99cmICIi+9Ziu9K1wHnEmptPAhfktys1
-swAwcSOFFttH/ww4BXgrcYOQC/ybv8gBmY7PqJldBdwI3EvclGYHcAzwZmIu578CF4cQlBcvB8zM
-Lgcu9y+XAb9B/Jzd48e2hRD+wM9dAzwNPBNCWDOhnwP6rB/UWDU5FhHZPzM7GvgkcXvnRcSdmG4B
-bggh7JxwbsvJsbctBP4L8T+J5cB24Hbgj0MIGw/lM0h7e6mfUTM7A/g4cA6wAphHTKN4FPgW8Dch
-hOqhfxJpR2Z2PfF732TSifC+JsfePuXP+kGNVZNjEREREZFIOcciIiIiIk6TYxERERERp8mxiIiI
-iIjT5FhERERExGlyLCIiIiLiNDkWEREREXGaHIuIiIiIOE2ORUREREScJsciIiIiIk6TYxERERER
-p8mxiIiIiIjT5FhERERExGlyLCIiIiLiNDkWEREREXGaHIuIiIiIOE2ORUREREScJsciIiIiIu7/
-A9v2nxQquhI3AAAAAElFTkSuQmCC
+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
+zeyn7r6gBum5+0vM7A/EYMX8F4wjqW0hljHnynX3D6cvMO8i+1+rZ+SXwLIh4svgL6uUTZrUpruJ
+DmU+armWka/RidS52czOJTr1rePsflDcvSulwHydkelXK4iFdUbz71RfPXSmGTGoujiwuugrZEEN
+EZlBSquYBu7+ByLS8VdElOm3wHANh/YRHxBPcvfH1LoscFqd6fXE1EY/ovrKTGV/In6KPX06fopM
+7XoI8UH2GyKKNacHoLj7jcADiZ9DR3use4DPAfdz9x/UUq+Z/S0jB2PeSEQ+a2lTH7FwTH752gvM
+7EAGAs5p7v7vREf4g8DdNRxyE/FT/cPdfdxfUtJ0XKcT801XUyL+D09198/V1OiD5O5fJQZvfpCR
+ecjVbCMG843ZMXP3rxDjJ84nUkS2MnKO3knj7nuARxGR1z+Mseswkap0qru/8iCWlZ9MZxOP0ZWM
+TLuppkS0/yx3f7YW/xCZHcx9vk4/O7ulaNNx6XIIWYSni4j6/gm4Pg2yOthzLSE+vA8jBn70EB+I
+v661wy21SXMLn05EjVuJx/lu4NKUEyozLH1BuD/xS85SYhqtPcAtxP/ceJ3Jseo+lvhSupb4cns3
+cJW733mw7T6INhlxf+8LrCJSPXpS2/4E3OCz/IPAzA4nHtfVxHvlLmAL8X814yvhjcbMWoATiV8H
+1xCP/SAxaPZm4JoZzo8WkSrUORYRERERSZRWISIiIiKSqHMsIiIiIpKocywiIiIikqhzLCIiIiKS
+qHMsIiIiIpKocywiIiIikqhzLCIiIiKSqHMsIiIiIpKocywiIiIikqhzLCIiIiKSqHMsIiIiIpKo
+cywiIiIikqhzLCIiIiKSqHMsIiIiIpKocywiIiIikqhzLCIiIiKSqHMsIiIiIpKocywiIiIikqhz
+LCIiIiKSqHMsIiIiIpKocywiIiIikqhzLCIiIiKSqHMsIiIiIpKoczwKM9tsZm5mZ0zwuPPScRdN
+TcvAzM5I59g8VecQERERWYjUORYRERERSdQ5nnw7gD8DW2e6ISIiIiIyMQ0z3YD5xt0vBC6c6XaI
+iIiIyMQpciwiIiIikqhzXAMzO9zMPmVmd5pZn5ndZmYfNLMlVfYddUBe2u5mtsHMNprZZ1Odg2b2
+zcK+S9I5bkvnvNPM/svM1k3hXRURERFZ0NQ5Ht8xwG+BvweWAg5sAN4A/NbM1h5AnaelOp8PLAGG
+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
+xscLTtI4IrOdiPfWvcAngD8B7gd2m9k7ju/yRBbMSfk+qsmxiMjhtcTHgXniM8dbT9I4IrMt5Hvr
+PuBtwCr8Lx0X4ZPkVuCrZqaaeDmVTsr3US3IExEREQBCCH8669ALwEfNrAv4HD5R/teTfmEiJ5Ey
+xyIihzeTiWiZJz5zvP8kjSMy28l4b30Jb+N2WVz4JHIqnJTvo5oci4gc3gvxcb4atvPj43w1cAs9
+jshsJ/y9FUIYB2YWkhaOdxyRV+mkfB/V5FhE5PBmenHeHFuuZWIG7VpgFPjeEcb5HjAGXDs78xbH
+vXnW64kcrYV6j87LzC4E2vAJcs/xjiPyKp3w9zpociwiclghhO3AQ0An8IFZ4bvwLNo95T01zewi
+M3vF7k8hhGHgnnj+nbPG+W9x/AfV41iO1UK9R83sHDNrnz2+mS0G/jp+eG8IQbvkyQllZrXxPXpu
++fHjea8f1+trExARkcObY7vSLcCP4j03twLXlG9XamYBYPZGCnNsH/0E8Brgp/ANQq6J3/xFjslC
+vEfN7D3AF4Hv4JvS9AFrgLfgtZxPAjeFEFQXL8fMzN4OvD1+uAy4BX+ffTse6wkh/GY8txN4CdgV
+QuicNc4xvdeP61o1ORYROTIzWw38Hr69cwe+E9M3gLtCCIdmnTvn5DjG2oHfxX9ILAd6gQeA/xVC
+ePlE3oNUtlf7HjWz1wEfAdYDK4BmvIxiM/D3wP8OIUye+DuRSmRmd+Lf++aTTYQPNzmO8aN+rx/X
+tWpyLCIiIiLiVHMsIiIiIhJpciwiIiIiEmlyLCIiIiISaXIsIiIiIhJpciwiIiIiEmlyLCIiIiIS
+aXIsIiIiIhJpciwiIiIiEmlyLCIiIiISaXIsIiIiIhJpciwiIiIiEmlyLCIiIiISaXIsIiIiIhJp
+ciwiIiIiEmlyLCIiIiISaXIsIiIiIhJpciwiIiIiEv1/Caub+St9O8UAAAAASUVORK5CYII=
 "
 width=355
 height=319
